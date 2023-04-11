@@ -1,0 +1,138 @@
+table:
+  name: valuations_financial_sheets
+  schema: public
+object_relationships:
+  - name: valuationByValuation
+    using:
+      foreign_key_constraint_on: valuation
+insert_permissions:
+  - role: buyco_consultant
+    permission:
+      check: {}
+      columns:
+        - balance_sheet
+        - income_statement
+        - created_at
+        - updated_at
+        - id
+        - valuation
+  - role: buyco_consultant_admin
+    permission:
+      check: {}
+      columns:
+        - balance_sheet
+        - income_statement
+        - created_at
+        - updated_at
+        - id
+        - valuation
+  - role: external_consultant
+    permission:
+      check: {}
+      columns:
+        - balance_sheet
+        - income_statement
+        - created_at
+        - updated_at
+        - id
+        - valuation
+  - role: external_consultant_admin
+    permission:
+      check: {}
+      columns:
+        - balance_sheet
+        - income_statement
+        - created_at
+        - updated_at
+        - id
+        - valuation
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - valuation
+        - balance_sheet
+        - income_statement
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - balance_sheet
+        - income_statement
+        - created_at
+        - updated_at
+        - id
+        - valuation
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - balance_sheet
+        - income_statement
+        - created_at
+        - updated_at
+        - id
+        - valuation
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - balance_sheet
+        - income_statement
+        - created_at
+        - updated_at
+        - id
+        - valuation
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - balance_sheet
+        - income_statement
+        - created_at
+        - updated_at
+        - id
+        - valuation
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - id
+        - valuation
+        - balance_sheet
+        - income_statement
+        - created_at
+        - updated_at
+      filter: {}
+update_permissions:
+  - role: buyco_consultant
+    permission:
+      columns:
+        - balance_sheet
+        - income_statement
+      filter: {}
+      check: null
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - balance_sheet
+        - income_statement
+      filter: {}
+      check: null
+  - role: external_consultant
+    permission:
+      columns:
+        - balance_sheet
+        - income_statement
+      filter: {}
+      check: null
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - balance_sheet
+        - income_statement
+      filter: {}
+      check: null

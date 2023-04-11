@@ -1,0 +1,120 @@
+table:
+  name: valuations_cnpj_status
+  schema: public
+object_relationships:
+  - name: valuationByValuation
+    using:
+      foreign_key_constraint_on: valuation
+select_permissions:
+  - role: buyco_consultant
+    permission:
+      columns:
+        - valuation
+        - status
+        - status_date
+        - status_reason
+        - special_status
+        - special_status_date
+        - created_at
+        - updated_at
+      filter:
+        valuationByValuation:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+      allow_aggregations: true
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - special_status_date
+        - status_date
+        - special_status
+        - status
+        - status_reason
+        - created_at
+        - updated_at
+        - valuation
+      filter:
+        valuationByValuation:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      allow_aggregations: true
+  - role: external_consultant
+    permission:
+      columns:
+        - special_status_date
+        - status_date
+        - special_status
+        - status
+        - status_reason
+        - created_at
+        - updated_at
+        - valuation
+      filter:
+        valuationByValuation:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+      allow_aggregations: true
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - special_status_date
+        - status_date
+        - special_status
+        - status
+        - status_reason
+        - created_at
+        - updated_at
+        - valuation
+      filter:
+        valuationByValuation:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      allow_aggregations: true
+  - role: valuation_client
+    permission:
+      columns:
+        - valuation
+        - status
+        - status_date
+        - status_reason
+        - special_status
+        - special_status_date
+        - created_at
+        - updated_at
+      filter:
+        valuation:
+          _eq: x-hasura-valuation-id
+delete_permissions:
+  - role: buyco_consultant
+    permission:
+      filter:
+        valuationByValuation:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+  - role: buyco_consultant_admin
+    permission:
+      filter:
+        valuationByValuation:
+          consulting_companies:
+            _eq: x-hasura-company-id
+  - role: external_consultant
+    permission:
+      filter:
+        valuationByValuation:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+  - role: external_consultant_admin
+    permission:
+      filter:
+        valuationByValuation:
+          consulting_companies:
+            _eq: x-hasura-company-id
+  - role: valuation_client
+    permission:
+      filter:
+        valuation:
+          _eq: x-hasura-valuation-id

@@ -1,0 +1,10 @@
+table:
+  name: profile_test_information
+  schema: public
+object_relationships:
+  - name: profile_test_investment_period
+    using:
+      foreign_key_constraint_on: investment_period
+  - name: profile_test_investment_range
+    using:
+      foreign_key_constraint_on: investment_range

@@ -1,0 +1,115 @@
+table:
+  name: damodaran_industries
+  schema: public
+array_relationships:
+  - name: damodaran_betas
+    using:
+      foreign_key_constraint_on:
+        column: industry
+        table:
+          name: damodaran_betas
+          schema: public
+  - name: damodaran_historical_growth_rates
+    using:
+      foreign_key_constraint_on:
+        column: industry
+        table:
+          name: damodaran_historical_growth_rates
+          schema: public
+  - name: damodaran_margins
+    using:
+      foreign_key_constraint_on:
+        column: industry
+        table:
+          name: damodaran_margins
+          schema: public
+  - name: damodaran_multiple_ebitdas
+    using:
+      foreign_key_constraint_on:
+        column: industry
+        table:
+          name: damodaran_multiple_ebitda
+          schema: public
+  - name: damodaran_multiple_sales
+    using:
+      foreign_key_constraint_on:
+        column: industry
+        table:
+          name: damodaran_multiple_sale
+          schema: public
+  - name: damodaran_number_firms
+    using:
+      foreign_key_constraint_on:
+        column: industry
+        table:
+          name: damodaran_number_firms
+          schema: public
+  - name: damodaran_total_betas
+    using:
+      foreign_key_constraint_on:
+        column: industry
+        table:
+          name: damodaran_total_betas
+          schema: public
+  - name: valuations_and_markets
+    using:
+      foreign_key_constraint_on:
+        column: damodaran_sector
+        table:
+          name: valuations_and_market
+          schema: public
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - name
+        - description
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - description
+        - name
+        - created_at
+        - updated_at
+        - id
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - description
+        - name
+        - created_at
+        - updated_at
+        - id
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - description
+        - name
+        - created_at
+        - updated_at
+        - id
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - description
+        - name
+        - created_at
+        - updated_at
+        - id
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - description
+        - name
+        - created_at
+        - updated_at
+        - id
+      filter: {}

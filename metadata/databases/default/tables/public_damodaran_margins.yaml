@@ -1,0 +1,89 @@
+table:
+  name: damodaran_margins
+  schema: public
+object_relationships:
+  - name: damodaran_industry
+    using:
+      foreign_key_constraint_on: industry
+  - name: damodaran_region
+    using:
+      foreign_key_constraint_on: region
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - ebtida_sales
+        - gross_margin
+        - net_margin
+        - year
+        - created_at
+        - updated_at
+        - id
+        - industry
+        - region
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - ebtida_sales
+        - gross_margin
+        - net_margin
+        - year
+        - created_at
+        - updated_at
+        - id
+        - industry
+        - region
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - ebtida_sales
+        - gross_margin
+        - net_margin
+        - year
+        - created_at
+        - updated_at
+        - id
+        - industry
+        - region
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - ebtida_sales
+        - gross_margin
+        - net_margin
+        - year
+        - created_at
+        - updated_at
+        - id
+        - industry
+        - region
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - ebtida_sales
+        - gross_margin
+        - net_margin
+        - year
+        - created_at
+        - updated_at
+        - id
+        - industry
+        - region
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - ebtida_sales
+        - gross_margin
+        - net_margin
+        - year
+        - created_at
+        - updated_at
+        - id
+        - industry
+        - region
+      filter: {}

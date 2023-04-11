@@ -1,0 +1,330 @@
+table:
+  name: valuations_data_colect
+  schema: public
+object_relationships:
+  - name: consultantAndValuationRef
+    using:
+      manual_configuration:
+        column_mapping:
+          valuation: valuation
+        insertion_order: null
+        remote_table:
+          name: consultants_and_valuations
+          schema: public
+  - name: valuationRef
+    using:
+      foreign_key_constraint_on: valuation
+insert_permissions:
+  - role: buyco_consultant
+    permission:
+      check:
+        consultantAndValuationRef:
+          _and:
+            - consultant:
+                _eq: x-hasura-consultant-id
+            - type:
+                _ne: viewer
+      columns:
+        - allow_files
+        - allow_manual
+        - collecting
+        - collecting_plus
+        - created_at
+        - id
+        - plus
+        - updated_at
+        - valuation
+  - role: buyco_consultant_admin
+    permission:
+      check:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      columns:
+        - allow_files
+        - allow_manual
+        - collecting
+        - collecting_plus
+        - plus
+        - created_at
+        - updated_at
+        - id
+        - valuation
+  - role: external_consultant
+    permission:
+      check:
+        consultantAndValuationRef:
+          _and:
+            - consultant:
+                _eq: x-hasura-consultant-id
+            - type:
+                _ne: viewer
+      columns:
+        - allow_files
+        - allow_manual
+        - collecting
+        - collecting_plus
+        - created_at
+        - id
+        - plus
+        - updated_at
+        - valuation
+  - role: external_consultant_admin
+    permission:
+      check:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      columns:
+        - allow_files
+        - allow_manual
+        - collecting
+        - collecting_plus
+        - plus
+        - created_at
+        - updated_at
+        - id
+        - valuation
+  - role: valuation_client
+    permission:
+      check:
+        valuation:
+          _eq: x-hasura-valuation-id
+      columns:
+        - allow_files
+        - allow_manual
+        - collecting
+        - collecting_plus
+        - created_at
+        - id
+        - plus
+        - updated_at
+        - valuation
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - allow_files
+        - allow_manual
+        - collecting
+        - collecting_plus
+        - created_at
+        - id
+        - plus
+        - updated_at
+        - valuation
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - allow_files
+        - allow_manual
+        - collecting
+        - collecting_plus
+        - created_at
+        - id
+        - plus
+        - updated_at
+        - valuation
+      filter:
+        consultantAndValuationRef:
+          _and:
+            - consultant:
+                _eq: x-hasura-consultant-id
+            - type:
+                _ne: viewer
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - allow_files
+        - allow_manual
+        - collecting
+        - collecting_plus
+        - plus
+        - created_at
+        - updated_at
+        - id
+        - valuation
+      filter:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      allow_aggregations: true
+  - role: external_consultant
+    permission:
+      columns:
+        - allow_files
+        - allow_manual
+        - collecting
+        - collecting_plus
+        - created_at
+        - id
+        - plus
+        - updated_at
+        - valuation
+      filter:
+        consultantAndValuationRef:
+          _and:
+            - consultant:
+                _eq: x-hasura-consultant-id
+            - type:
+                _ne: viewer
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - allow_files
+        - allow_manual
+        - collecting
+        - collecting_plus
+        - plus
+        - created_at
+        - updated_at
+        - id
+        - valuation
+      filter:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      allow_aggregations: true
+  - role: valuation_client
+    permission:
+      columns:
+        - allow_files
+        - allow_manual
+        - collecting
+        - collecting_plus
+        - created_at
+        - id
+        - plus
+        - updated_at
+        - valuation
+      filter:
+        valuation:
+          _eq: x-hasura-valuation-id
+update_permissions:
+  - role: buyco_consultant
+    permission:
+      columns:
+        - allow_files
+        - allow_manual
+        - collecting
+        - collecting_plus
+        - created_at
+        - id
+        - plus
+        - updated_at
+        - valuation
+      filter:
+        consultantAndValuationRef:
+          _and:
+            - consultant:
+                _eq: x-hasura-consultant-id
+            - type:
+                _ne: viewer
+      check: null
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - allow_files
+        - allow_manual
+        - collecting
+        - collecting_plus
+        - plus
+        - created_at
+        - updated_at
+        - id
+        - valuation
+      filter:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      check: null
+  - role: external_consultant
+    permission:
+      columns:
+        - allow_files
+        - allow_manual
+        - collecting
+        - collecting_plus
+        - created_at
+        - id
+        - plus
+        - updated_at
+        - valuation
+      filter:
+        consultantAndValuationRef:
+          _and:
+            - consultant:
+                _eq: x-hasura-consultant-id
+            - type:
+                _ne: viewer
+      check: null
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - allow_files
+        - allow_manual
+        - collecting
+        - collecting_plus
+        - plus
+        - created_at
+        - updated_at
+        - id
+        - valuation
+      filter:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      check: null
+  - role: valuation_client
+    permission:
+      columns:
+        - allow_files
+        - allow_manual
+        - collecting
+        - collecting_plus
+        - created_at
+        - id
+        - plus
+        - updated_at
+        - valuation
+      filter:
+        valuation:
+          _eq: x-hasura-valuation-id
+      check: null
+delete_permissions:
+  - role: buyco_consultant
+    permission:
+      filter:
+        consultantAndValuationRef:
+          _and:
+            - consultant:
+                _eq: x-hasura-consultant-id
+            - type:
+                _ne: viewer
+  - role: buyco_consultant_admin
+    permission:
+      filter:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+  - role: external_consultant
+    permission:
+      filter:
+        consultantAndValuationRef:
+          _and:
+            - consultant:
+                _eq: x-hasura-consultant-id
+            - type:
+                _ne: viewer
+  - role: external_consultant_admin
+    permission:
+      filter:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+  - role: valuation_client
+    permission:
+      filter:
+        valuation:
+          _eq: x-hasura-valuation-id

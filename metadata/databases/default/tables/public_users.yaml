@@ -1,0 +1,79 @@
+table:
+  name: users
+  schema: public
+object_relationships:
+  - name: client_portal_profile
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: client_portal_profiles
+          schema: public
+  - name: emailRef
+    using:
+      manual_configuration:
+        column_mapping:
+          email: email
+        insertion_order: null
+        remote_table:
+          name: consultants
+          schema: public
+  - name: profileRef
+    using:
+      manual_configuration:
+        column_mapping:
+          profile: value
+        insertion_order: null
+        remote_table:
+          name: profile
+          schema: public
+select_permissions:
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - email
+        - password
+        - created_at
+        - updated_at
+        - profile
+      filter:
+        emailRef:
+          id:
+            _eq: x-hasura-consultant-id
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - profile
+        - created_at
+        - updated_at
+        - id
+        - email
+        - password
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - id
+        - email
+        - password
+        - created_at
+        - updated_at
+        - profile
+      filter:
+        emailRef:
+          id:
+            _eq: x-hasura-consultant-id
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - profile
+        - created_at
+        - updated_at
+        - id
+        - email
+        - password
+      filter:
+        emailRef:
+          consulting_companies:
+            _eq: x-hasura-company-id

@@ -1,0 +1,3 @@
+table:
+  name: client_portal_mail_send
+  schema: public

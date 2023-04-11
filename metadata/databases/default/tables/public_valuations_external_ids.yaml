@@ -1,0 +1,10 @@
+table:
+  name: valuations_external_ids
+  schema: public
+object_relationships:
+  - name: valuationByValuation
+    using:
+      foreign_key_constraint_on: valuation
+  - name: valuations_external_ids_type
+    using:
+      foreign_key_constraint_on: external_id_type

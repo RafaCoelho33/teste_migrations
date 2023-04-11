@@ -1,0 +1,75 @@
+table:
+  name: digital_valuation_final_value
+  schema: public
+object_relationships:
+  - name: digitalValuationInformationByDigitalValuationInformation
+    using:
+      foreign_key_constraint_on: digital_valuation_information
+insert_permissions:
+  - role: anonymous
+    permission:
+      check: {}
+      columns:
+        - id
+        - digital_valuation_information
+        - value
+        - created_at
+        - updated_at
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - digital_valuation_information
+        - value
+        - created_at
+        - updated_at
+        - revenue
+        - profit
+      filter: {}
+  - role: buyco
+    permission:
+      columns:
+        - id
+        - profit
+        - revenue
+        - value
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - profit
+        - revenue
+        - value
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - id
+        - profit
+        - revenue
+        - value
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - id
+        - profit
+        - revenue
+        - value
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - id
+        - profit
+        - revenue
+        - value
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - digital_valuation_information
+        - value
+      filter: {}

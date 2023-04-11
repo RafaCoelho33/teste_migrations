@@ -1,0 +1,7 @@
+table:
+  name: client_portal_phone_confirmation_process
+  schema: public
+object_relationships:
+  - name: clientPortalProfileByClientPortalProfile
+    using:
+      foreign_key_constraint_on: client_portal_profile

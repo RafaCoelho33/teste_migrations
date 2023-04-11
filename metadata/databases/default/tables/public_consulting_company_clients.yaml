@@ -1,0 +1,302 @@
+table:
+  name: consulting_company_clients
+  schema: public
+object_relationships:
+  - name: consultingCompaniesRef
+    using:
+      manual_configuration:
+        column_mapping:
+          consulting_companies: id
+        insertion_order: null
+        remote_table:
+          name: consulting_companies
+          schema: public
+array_relationships:
+  - name: sida_clients_states
+    using:
+      foreign_key_constraint_on:
+        column: client_id
+        table:
+          name: sida_clients_state
+          schema: public
+insert_permissions:
+  - role: buyco
+    permission:
+      check:
+        consulting_companies:
+          _eq: X-Hasura-Consulting-company
+      columns:
+        - id
+        - name
+        - cpf
+        - phone1
+        - phone2
+        - email
+        - consulting_companies
+        - created_at
+        - updated_at
+        - disabled_at
+  - role: buyco_consultant
+    permission:
+      check:
+        consulting_companies:
+          _eq: x-hasura-company-id
+      columns:
+        - id
+        - name
+        - cpf
+        - phone1
+        - phone2
+        - email
+        - consulting_companies
+        - created_at
+        - updated_at
+        - disabled_at
+  - role: buyco_consultant_admin
+    permission:
+      check:
+        consulting_companies:
+          _eq: x-hasura-company-id
+      columns:
+        - id
+        - name
+        - cpf
+        - phone1
+        - phone2
+        - email
+        - consulting_companies
+        - created_at
+        - updated_at
+        - disabled_at
+  - role: external_consultant
+    permission:
+      check:
+        consulting_companies:
+          _eq: x-hasura-company-id
+      columns:
+        - id
+        - name
+        - cpf
+        - phone1
+        - phone2
+        - email
+        - consulting_companies
+        - created_at
+        - updated_at
+        - disabled_at
+  - role: external_consultant_admin
+    permission:
+      check:
+        consulting_companies:
+          _eq: x-hasura-company-id
+      columns:
+        - id
+        - name
+        - cpf
+        - phone1
+        - phone2
+        - email
+        - consulting_companies
+        - created_at
+        - updated_at
+        - disabled_at
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - email
+        - id
+        - name
+        - phone1
+        - phone2
+      filter: {}
+  - role: buyco
+    permission:
+      columns:
+        - cpf
+        - email
+        - name
+        - phone1
+        - phone2
+        - created_at
+        - disabled_at
+        - updated_at
+        - consulting_companies
+        - id
+      filter:
+        consulting_companies:
+          _eq: X-Hasura-Consulting-company
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - name
+        - cpf
+        - phone1
+        - phone2
+        - email
+        - consulting_companies
+        - created_at
+        - updated_at
+        - disabled_at
+      filter:
+        consulting_companies:
+          _eq: x-hasura-company-id
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - id
+        - name
+        - cpf
+        - phone1
+        - phone2
+        - email
+        - consulting_companies
+        - created_at
+        - updated_at
+        - disabled_at
+      filter:
+        consulting_companies:
+          _eq: x-hasura-company-id
+  - role: external_consultant
+    permission:
+      columns:
+        - id
+        - name
+        - cpf
+        - phone1
+        - phone2
+        - email
+        - consulting_companies
+        - created_at
+        - updated_at
+        - disabled_at
+      filter:
+        consulting_companies:
+          _eq: x-hasura-company-id
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - id
+        - name
+        - cpf
+        - phone1
+        - phone2
+        - email
+        - consulting_companies
+        - created_at
+        - updated_at
+        - disabled_at
+      filter:
+        consulting_companies:
+          _eq: x-hasura-company-id
+update_permissions:
+  - role: buyco
+    permission:
+      columns:
+        - cpf
+        - email
+        - name
+        - phone1
+        - phone2
+        - created_at
+        - disabled_at
+        - updated_at
+        - consulting_companies
+        - id
+      filter:
+        consulting_companies:
+          _eq: X-Hasura-Consulting-company
+      check: null
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - name
+        - cpf
+        - phone1
+        - phone2
+        - email
+        - consulting_companies
+        - created_at
+        - updated_at
+        - disabled_at
+      filter:
+        consulting_companies:
+          _eq: x-hasura-company-id
+      check:
+        consulting_companies:
+          _eq: x-hasura-company-id
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - id
+        - name
+        - cpf
+        - phone1
+        - phone2
+        - email
+        - consulting_companies
+        - created_at
+        - updated_at
+        - disabled_at
+      filter:
+        consulting_companies:
+          _eq: x-hasura-company-id
+      check:
+        consulting_companies:
+          _eq: x-hasura-company-id
+  - role: external_consultant
+    permission:
+      columns:
+        - id
+        - name
+        - cpf
+        - phone1
+        - phone2
+        - email
+        - consulting_companies
+        - created_at
+        - updated_at
+        - disabled_at
+      filter:
+        consulting_companies:
+          _eq: x-hasura-company-id
+      check:
+        consulting_companies:
+          _eq: x-hasura-company-id
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - id
+        - name
+        - cpf
+        - phone1
+        - phone2
+        - email
+        - consulting_companies
+        - created_at
+        - updated_at
+        - disabled_at
+      filter:
+        consulting_companies:
+          _eq: x-hasura-company-id
+      check:
+        consulting_companies:
+          _eq: x-hasura-company-id
+delete_permissions:
+  - role: buyco
+    permission:
+      filter:
+        consulting_companies:
+          _eq: X-Hasura-Consulting-company
+  - role: buyco_consultant_admin
+    permission:
+      filter:
+        consulting_companies:
+          _eq: x-hasura-company-id
+  - role: external_consultant_admin
+    permission:
+      filter:
+        consulting_companies:
+          _eq: x-hasura-company-id

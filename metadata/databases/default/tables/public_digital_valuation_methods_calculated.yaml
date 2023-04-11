@@ -1,0 +1,21 @@
+table:
+  name: digital_valuation_methods_calculated
+  schema: public
+object_relationships:
+  - name: digitalValuationInformationByDigitalValuationInformation
+    using:
+      foreign_key_constraint_on: digital_valuation_information
+  - name: digital_valuation_methods_calculated_type
+    using:
+      foreign_key_constraint_on: type
+insert_permissions:
+  - role: anonymous
+    permission:
+      check: {}
+      columns:
+        - id
+        - digital_valuation_information
+        - type
+        - value
+        - created_at
+        - updated_at

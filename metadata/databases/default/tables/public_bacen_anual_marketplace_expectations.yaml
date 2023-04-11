@@ -1,0 +1,116 @@
+table:
+  name: bacen_anual_marketplace_expectations
+  schema: public
+object_relationships:
+  - name: bacen_indicator_type
+    using:
+      foreign_key_constraint_on: indicator_type
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - indicator_type
+        - indicator_details
+        - date
+        - average
+        - median
+        - standard_deviation
+        - minimum
+        - maximum
+        - number_of_respondents
+        - base_calculation
+        - created_at
+        - updated_at
+        - reference_date
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - date
+        - average
+        - base_calculation
+        - maximum
+        - median
+        - minimum
+        - standard_deviation
+        - number_of_respondents
+        - reference_date
+        - indicator_details
+        - indicator_type
+        - created_at
+        - updated_at
+        - id
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - date
+        - average
+        - base_calculation
+        - maximum
+        - median
+        - minimum
+        - standard_deviation
+        - number_of_respondents
+        - reference_date
+        - indicator_details
+        - indicator_type
+        - created_at
+        - updated_at
+        - id
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - date
+        - average
+        - base_calculation
+        - maximum
+        - median
+        - minimum
+        - standard_deviation
+        - number_of_respondents
+        - reference_date
+        - indicator_details
+        - indicator_type
+        - created_at
+        - updated_at
+        - id
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - date
+        - average
+        - base_calculation
+        - maximum
+        - median
+        - minimum
+        - standard_deviation
+        - number_of_respondents
+        - reference_date
+        - indicator_details
+        - indicator_type
+        - created_at
+        - updated_at
+        - id
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - date
+        - average
+        - base_calculation
+        - maximum
+        - median
+        - minimum
+        - standard_deviation
+        - number_of_respondents
+        - reference_date
+        - indicator_details
+        - indicator_type
+        - created_at
+        - updated_at
+        - id
+      filter: {}

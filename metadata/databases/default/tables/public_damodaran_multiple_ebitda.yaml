@@ -1,0 +1,119 @@
+table:
+  name: damodaran_multiple_ebitda
+  schema: public
+object_relationships:
+  - name: damodaran_industry
+    using:
+      foreign_key_constraint_on: industry
+  - name: damodaran_region
+    using:
+      foreign_key_constraint_on: region
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - year
+        - industry
+        - region
+        - EV_EBITDAReD
+        - EV_EBITDA
+        - EV_EBIT
+        - EV_EBIT_1_t
+        - EV_EBITDAReD_all
+        - EV_EBITDA_all
+        - EV_EBIT_all
+        - EV_EBIT_1_t_all
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - year
+        - industry
+        - region
+        - EV_EBITDAReD
+        - EV_EBITDA
+        - EV_EBIT
+        - EV_EBIT_1_t
+        - EV_EBITDAReD_all
+        - EV_EBITDA_all
+        - EV_EBIT_all
+        - EV_EBIT_1_t_all
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - id
+        - year
+        - industry
+        - region
+        - EV_EBITDAReD
+        - EV_EBITDA
+        - EV_EBIT
+        - EV_EBIT_1_t
+        - EV_EBITDAReD_all
+        - EV_EBITDA_all
+        - EV_EBIT_all
+        - EV_EBIT_1_t_all
+        - created_at
+        - updated_at
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - id
+        - year
+        - industry
+        - region
+        - EV_EBITDAReD
+        - EV_EBITDA
+        - EV_EBIT
+        - EV_EBIT_1_t
+        - EV_EBITDAReD_all
+        - EV_EBITDA_all
+        - EV_EBIT_all
+        - EV_EBIT_1_t_all
+        - created_at
+        - updated_at
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - id
+        - year
+        - industry
+        - region
+        - EV_EBITDAReD
+        - EV_EBITDA
+        - EV_EBIT
+        - EV_EBIT_1_t
+        - EV_EBITDAReD_all
+        - EV_EBITDA_all
+        - EV_EBIT_all
+        - EV_EBIT_1_t_all
+        - created_at
+        - updated_at
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - id
+        - year
+        - industry
+        - region
+        - EV_EBITDAReD
+        - EV_EBITDA
+        - EV_EBIT
+        - EV_EBIT_1_t
+        - EV_EBITDAReD_all
+        - EV_EBITDA_all
+        - EV_EBIT_all
+        - EV_EBIT_1_t_all
+        - created_at
+        - updated_at
+      filter: {}

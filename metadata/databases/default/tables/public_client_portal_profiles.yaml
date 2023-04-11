@@ -1,0 +1,79 @@
+table:
+  name: client_portal_profiles
+  schema: public
+object_relationships:
+  - name: client_portal_company
+    using:
+      foreign_key_constraint_on:
+        column: profile_id
+        table:
+          name: client_portal_companies
+          schema: public
+  - name: consulting_company
+    using:
+      foreign_key_constraint_on: consulting_companies
+  - name: profiles_type
+    using:
+      foreign_key_constraint_on: profile_type
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
+array_relationships:
+  - name: client_portal_ads
+    using:
+      foreign_key_constraint_on:
+        column: profile_id
+        table:
+          name: client_portal_ad
+          schema: public
+  - name: client_portal_companies
+    using:
+      foreign_key_constraint_on:
+        column: profile_id
+        table:
+          name: client_portal_companies
+          schema: public
+  - name: client_portal_fingerprints
+    using:
+      foreign_key_constraint_on:
+        column: user
+        table:
+          name: client_portal_fingerprints
+          schema: public
+  - name: client_portal_phone_confirmation_processes
+    using:
+      foreign_key_constraint_on:
+        column: client_portal_profile
+        table:
+          name: client_portal_phone_confirmation_process
+          schema: public
+  - name: client_portal_tokens
+    using:
+      foreign_key_constraint_on:
+        column: profile_id
+        table:
+          name: client_portal_tokens
+          schema: public
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - consulting_companies
+        - email
+        - id
+        - name
+        - phone
+        - phone_confirmed
+        - picture
+        - profile_type
+        - updated_at
+        - user_id
+      filter: {}
+      allow_aggregations: true
+update_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - phone_confirmed
+      filter: {}
+      check: null

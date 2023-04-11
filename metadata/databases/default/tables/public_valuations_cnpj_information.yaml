@@ -1,0 +1,232 @@
+table:
+  name: valuations_cnpj_information
+  schema: public
+object_relationships:
+  - name: valuationRef
+    using:
+      foreign_key_constraint_on: valuation
+  - name: valuation_cnpj_information_legal_nature
+    using:
+      foreign_key_constraint_on: legal_nature
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - company_name
+        - fancy_name
+        - valuation
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - valuation
+        - company_name
+        - fancy_name
+        - created_at
+        - updated_at
+        - creation_date
+        - phone
+        - email
+        - capital
+        - legal_nature
+      filter:
+        valuationRef:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+      allow_aggregations: true
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - creation_date
+        - capital
+        - company_name
+        - email
+        - fancy_name
+        - legal_nature
+        - phone
+        - created_at
+        - updated_at
+        - valuation
+      filter:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      allow_aggregations: true
+  - role: external_consultant
+    permission:
+      columns:
+        - valuation
+        - company_name
+        - fancy_name
+        - created_at
+        - updated_at
+        - creation_date
+        - phone
+        - email
+        - capital
+        - legal_nature
+      filter:
+        valuationRef:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+      allow_aggregations: true
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - creation_date
+        - capital
+        - company_name
+        - email
+        - fancy_name
+        - legal_nature
+        - phone
+        - created_at
+        - updated_at
+        - valuation
+      filter:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      allow_aggregations: true
+  - role: valuation_client
+    permission:
+      columns:
+        - valuation
+        - company_name
+        - fancy_name
+        - created_at
+        - updated_at
+        - creation_date
+        - phone
+        - email
+        - capital
+        - legal_nature
+      filter:
+        valuation:
+          _eq: x-hasura-valuation-id
+update_permissions:
+  - role: buyco_consultant
+    permission:
+      columns:
+        - valuation
+        - company_name
+        - fancy_name
+        - created_at
+        - updated_at
+        - creation_date
+        - phone
+        - email
+        - capital
+        - legal_nature
+      filter:
+        valuationRef:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+      check: null
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - creation_date
+        - capital
+        - company_name
+        - email
+        - fancy_name
+        - legal_nature
+        - phone
+        - created_at
+        - updated_at
+        - valuation
+      filter:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      check: null
+  - role: external_consultant
+    permission:
+      columns:
+        - valuation
+        - company_name
+        - fancy_name
+        - created_at
+        - updated_at
+        - creation_date
+        - phone
+        - email
+        - capital
+        - legal_nature
+      filter:
+        valuationRef:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+      check: null
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - creation_date
+        - capital
+        - company_name
+        - email
+        - fancy_name
+        - legal_nature
+        - phone
+        - created_at
+        - updated_at
+        - valuation
+      filter:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      check: null
+  - role: valuation_client
+    permission:
+      columns:
+        - valuation
+        - company_name
+        - fancy_name
+        - created_at
+        - updated_at
+        - creation_date
+        - phone
+        - email
+        - capital
+        - legal_nature
+      filter:
+        valuation:
+          _eq: x-hasura-valuation-id
+      check: null
+delete_permissions:
+  - role: buyco_consultant
+    permission:
+      filter:
+        valuationRef:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+  - role: buyco_consultant_admin
+    permission:
+      filter:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+  - role: external_consultant
+    permission:
+      filter:
+        valuationRef:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+  - role: external_consultant_admin
+    permission:
+      filter:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+  - role: valuation_client
+    permission:
+      filter:
+        valuation:
+          _eq: x-hasura-valuation-id

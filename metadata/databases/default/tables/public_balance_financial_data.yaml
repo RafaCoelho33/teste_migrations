@@ -1,0 +1,10 @@
+table:
+  name: balance_financial_data
+  schema: public
+object_relationships:
+  - name: balance_financial
+    using:
+      foreign_key_constraint_on: financial
+  - name: balance_financial_data_type
+    using:
+      foreign_key_constraint_on: financial_data_type

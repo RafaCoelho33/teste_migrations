@@ -1,0 +1,200 @@
+table:
+  name: client_portal_ad_status
+  schema: public
+object_relationships:
+  - name: client_portal_ad
+    using:
+      foreign_key_constraint_on: ad_id
+insert_permissions:
+  - role: buyco_consultant
+    permission:
+      check: {}
+      columns:
+        - is_deleted
+        - is_disabled
+        - reason
+        - disabled_at
+        - created_at
+        - deleted_at
+        - updated_at
+        - ad_id
+        - id
+  - role: buyco_consultant_admin
+    permission:
+      check: {}
+      columns:
+        - is_deleted
+        - is_disabled
+        - reason
+        - disabled_at
+        - created_at
+        - deleted_at
+        - updated_at
+        - ad_id
+        - id
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - ad_id
+        - is_deleted
+        - deleted_at
+        - created_at
+        - updated_at
+        - reason
+        - is_disabled
+        - disabled_at
+      filter: {}
+      allow_aggregations: true
+  - role: buyco_consultant
+    permission:
+      columns:
+        - is_deleted
+        - is_disabled
+        - reason
+        - disabled_at
+        - created_at
+        - deleted_at
+        - updated_at
+        - ad_id
+        - id
+      filter: {}
+      allow_aggregations: true
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - is_deleted
+        - is_disabled
+        - reason
+        - disabled_at
+        - created_at
+        - deleted_at
+        - updated_at
+        - ad_id
+        - id
+      filter: {}
+      allow_aggregations: true
+  - role: external_consultant
+    permission:
+      columns:
+        - is_deleted
+        - is_disabled
+        - reason
+        - disabled_at
+        - created_at
+        - deleted_at
+        - updated_at
+        - ad_id
+        - id
+      filter: {}
+      allow_aggregations: true
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - is_deleted
+        - is_disabled
+        - reason
+        - disabled_at
+        - created_at
+        - deleted_at
+        - updated_at
+        - ad_id
+        - id
+      filter: {}
+      allow_aggregations: true
+  - role: valuation_client
+    permission:
+      columns:
+        - is_deleted
+        - is_disabled
+        - reason
+        - disabled_at
+        - created_at
+        - deleted_at
+        - updated_at
+        - ad_id
+        - id
+      filter: {}
+      allow_aggregations: true
+update_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - deleted_at
+        - disabled_at
+        - is_deleted
+        - is_disabled
+      filter: {}
+      check: null
+  - role: buyco_consultant
+    permission:
+      columns:
+        - ad_id
+        - created_at
+        - deleted_at
+        - disabled_at
+        - id
+        - is_deleted
+        - is_disabled
+        - reason
+        - updated_at
+      filter: {}
+      check: null
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - is_deleted
+        - is_disabled
+        - reason
+        - disabled_at
+        - created_at
+        - deleted_at
+        - updated_at
+        - ad_id
+        - id
+      filter: {}
+      check: null
+  - role: external_consultant
+    permission:
+      columns:
+        - deleted_at
+        - disabled_at
+        - is_deleted
+        - is_disabled
+      filter: {}
+      check: null
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - deleted_at
+        - disabled_at
+        - is_deleted
+        - is_disabled
+      filter: {}
+      check: null
+  - role: valuation_client
+    permission:
+      columns:
+        - deleted_at
+        - disabled_at
+        - is_deleted
+        - is_disabled
+      filter: {}
+      check: null
+delete_permissions:
+  - role: buyco_consultant
+    permission:
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      filter: {}
+  - role: external_consultant
+    permission:
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      filter: {}
+  - role: valuation_client
+    permission:
+      filter: {}

@@ -1,0 +1,128 @@
+table:
+  name: suggestions
+  schema: public
+object_relationships:
+  - name: sectorAnalysisRef
+    using:
+      manual_configuration:
+        column_mapping:
+          sector_analysis: id
+        insertion_order: null
+        remote_table:
+          name: sector_analysis
+          schema: public
+insert_permissions:
+  - role: buyco
+    permission:
+      check: {}
+      columns:
+        - id
+        - sector_analysis
+        - text
+        - completed
+        - created_at
+        - updated_at
+  - role: buyco_consultant
+    permission:
+      check: {}
+      columns:
+        - id
+        - sector_analysis
+        - text
+        - completed
+        - created_at
+        - updated_at
+  - role: buyco_consultant_admin
+    permission:
+      check: {}
+      columns:
+        - id
+        - sector_analysis
+        - text
+        - completed
+        - created_at
+        - updated_at
+  - role: external_consultant
+    permission:
+      check: {}
+      columns:
+        - id
+        - sector_analysis
+        - text
+        - completed
+        - created_at
+        - updated_at
+  - role: external_consultant_admin
+    permission:
+      check: {}
+      columns:
+        - id
+        - sector_analysis
+        - text
+        - completed
+        - created_at
+        - updated_at
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - completed
+        - text
+        - created_at
+        - updated_at
+        - id
+        - sector_analysis
+      filter: {}
+      allow_aggregations: true
+  - role: buyco
+    permission:
+      columns:
+        - completed
+        - text
+        - created_at
+        - updated_at
+        - id
+        - sector_analysis
+      filter: {}
+      allow_aggregations: true
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - id
+        - sector_analysis
+        - text
+        - completed
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+update_permissions:
+  - role: buyco
+    permission:
+      columns:
+        - completed
+        - text
+        - created_at
+        - updated_at
+        - id
+        - sector_analysis
+      filter: {}
+      check: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - id
+        - sector_analysis
+        - text
+        - completed
+        - created_at
+        - updated_at
+      filter: {}
+      check: null
+delete_permissions:
+  - role: buyco
+    permission:
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      filter: {}

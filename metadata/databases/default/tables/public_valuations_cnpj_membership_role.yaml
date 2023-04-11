@@ -1,0 +1,46 @@
+table:
+  name: valuations_cnpj_membership_role
+  schema: public
+array_relationships:
+  - name: valuation_cnpj_memberships
+    using:
+      foreign_key_constraint_on:
+        column: role
+        table:
+          name: valuations_cnpj_membership
+          schema: public
+select_permissions:
+  - role: buyco_consultant
+    permission:
+      columns:
+        - code
+        - description
+      filter: {}
+      allow_aggregations: true
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - code
+        - description
+      filter: {}
+      allow_aggregations: true
+  - role: external_consultant
+    permission:
+      columns:
+        - code
+        - description
+      filter: {}
+      allow_aggregations: true
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - code
+        - description
+      filter: {}
+      allow_aggregations: true
+  - role: valuation_client
+    permission:
+      columns:
+        - code
+        - description
+      filter: {}

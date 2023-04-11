@@ -1,0 +1,43 @@
+table:
+  name: valuations_data_colect_files_type
+  schema: public
+is_enum: true
+array_relationships:
+  - name: valuations_data_colect_files
+    using:
+      foreign_key_constraint_on:
+        column: type
+        table:
+          name: valuations_data_colect_files
+          schema: public
+select_permissions:
+  - role: buyco_consultant
+    permission:
+      columns:
+        - value
+        - description
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - description
+        - value
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - description
+        - value
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - description
+        - value
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - description
+        - value
+      filter: {}

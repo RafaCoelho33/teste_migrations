@@ -1,0 +1,103 @@
+table:
+  name: valuations_finantial_spreadsheet
+  schema: public
+object_relationships:
+  - name: consultantAndValuationRef
+    using:
+      manual_configuration:
+        column_mapping:
+          valuation: valuation
+        insertion_order: null
+        remote_table:
+          name: consultants_and_valuations
+          schema: public
+  - name: valuationByValuation
+    using:
+      foreign_key_constraint_on: valuation
+select_permissions:
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - valuation
+        - url
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - id
+        - valuation
+        - url
+        - created_at
+        - updated_at
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - id
+        - valuation
+        - url
+        - created_at
+        - updated_at
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - id
+        - valuation
+        - url
+        - created_at
+        - updated_at
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - id
+        - valuation
+        - url
+        - created_at
+        - updated_at
+      filter: {}
+delete_permissions:
+  - role: buyco
+    permission:
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      filter:
+        consultantAndValuationRef:
+          _and:
+            - consultant:
+                _eq: x-hasura-consultant-id
+            - type:
+                _ne: viewer
+  - role: buyco_consultant_admin
+    permission:
+      filter:
+        consultantAndValuationRef:
+          valuationsRef:
+            consulting_companies:
+              _eq: x-hasura-company-id
+  - role: external_consultant
+    permission:
+      filter:
+        consultantAndValuationRef:
+          _and:
+            - consultant:
+                _eq: x-hasura-consultant-id
+            - type:
+                _ne: viewer
+  - role: external_consultant_admin
+    permission:
+      filter:
+        consultantAndValuationRef:
+          valuationsRef:
+            consulting_companies:
+              _eq: x-hasura-company-id
+  - role: valuation_client
+    permission:
+      filter:
+        valuation:
+          _eq: x-hasura-valuation-id

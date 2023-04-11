@@ -1,0 +1,10 @@
+table:
+  name: damodaran_number_firms
+  schema: public
+object_relationships:
+  - name: damodaran_industry
+    using:
+      foreign_key_constraint_on: industry
+  - name: damodaran_region
+    using:
+      foreign_key_constraint_on: region

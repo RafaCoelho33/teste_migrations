@@ -1,0 +1,12 @@
+table:
+  name: valuations_photos_type
+  schema: public
+is_enum: true
+array_relationships:
+  - name: valuations_photos
+    using:
+      foreign_key_constraint_on:
+        column: photos_type
+        table:
+          name: valuations_photos
+          schema: public

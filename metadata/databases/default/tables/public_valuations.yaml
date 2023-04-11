@@ -1,0 +1,656 @@
+table:
+  name: valuations
+  schema: public
+object_relationships:
+  - name: consultantAndValuationRef
+    using:
+      manual_configuration:
+        column_mapping:
+          id: valuation
+        insertion_order: null
+        remote_table:
+          name: consultants_and_valuations
+          schema: public
+  - name: consultingCompaniesRef
+    using:
+      manual_configuration:
+        column_mapping:
+          consulting_companies: id
+        insertion_order: null
+        remote_table:
+          name: consulting_companies
+          schema: public
+  - name: consultingCompanyClientsRef
+    using:
+      manual_configuration:
+        column_mapping:
+          consulting_company_client: id
+        insertion_order: null
+        remote_table:
+          name: consulting_company_clients
+          schema: public
+array_relationships:
+  - name: addresses
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_cnpj_address
+          schema: public
+  - name: company_information_by_valuations
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: company_information_by_valuation
+          schema: public
+  - name: consultant_expectations
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_consultant_expectations
+          schema: public
+  - name: highlights
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: highlights
+          schema: public
+  - name: inpis
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_inpi
+          schema: public
+  - name: taxations
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: taxation
+          schema: public
+  - name: valuation_and_markets
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_and_market
+          schema: public
+  - name: valuation_cnpj_and_activities
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_cnpj_and_activities
+          schema: public
+  - name: valuation_cnpj_informations
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_cnpj_information
+          schema: public
+  - name: valuation_cnpj_memberships
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_cnpj_membership
+          schema: public
+  - name: valuation_cnpj_simples_nacionals
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_cnpj_simples_nacional
+          schema: public
+  - name: valuation_cnpj_statuses
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_cnpj_status
+          schema: public
+  - name: valuations_accountant_data
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_accountant_data
+          schema: public
+  - name: valuations_and_activities
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_and_activities
+          schema: public
+  - name: valuations_and_differentials
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_and_differentials
+          schema: public
+  - name: valuations_and_spotlights
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_and_spotlight
+          schema: public
+  - name: valuations_chat_consultants
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_chat_consultant
+          schema: public
+  - name: valuations_cnds
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_cnd
+          schema: public
+  - name: valuations_data_colect_files
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_data_colect_files
+          schema: public
+  - name: valuations_data_colects
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_data_colect
+          schema: public
+  - name: valuations_descriptions
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_description
+          schema: public
+  - name: valuations_digital_presences
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_digital_presence
+          schema: public
+  - name: valuations_external_ids
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_external_ids
+          schema: public
+  - name: valuations_files
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_files
+          schema: public
+  - name: valuations_final_values
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_final_value
+          schema: public
+  - name: valuations_financial_sheets
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_financial_sheets
+          schema: public
+  - name: valuations_informations
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_information
+          schema: public
+  - name: valuations_methods_values
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_methods_value
+          schema: public
+  - name: valuations_notes
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_notes
+          schema: public
+  - name: valuations_photos
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_photos
+          schema: public
+  - name: valuations_plus_charts
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_plus_charts
+          schema: public
+  - name: valuations_plus_dynamic_analisys
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_plus_dynamic_analisys
+          schema: public
+  - name: valuations_plus_ebitda_analisys
+    using:
+      manual_configuration:
+        column_mapping:
+          id: valuation
+        insertion_order: null
+        remote_table:
+          name: valuations_plus_ebitda_analisys
+          schema: public
+  - name: valuations_plus_projection
+    using:
+      manual_configuration:
+        column_mapping:
+          id: valuation
+        insertion_order: null
+        remote_table:
+          name: valuations_plus_projection
+          schema: public
+  - name: valuations_plus_results_projects
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_plus_results
+          schema: public
+  - name: valuations_plus_risk_analisys
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_plus_risk_analisys
+          schema: public
+  - name: valuations_statuses
+    using:
+      foreign_key_constraint_on:
+        column: valuation
+        table:
+          name: valuations_status
+          schema: public
+  - name: valuations_taxation
+    using:
+      manual_configuration:
+        column_mapping:
+          id: valuation
+        insertion_order: null
+        remote_table:
+          name: valuations_taxation
+          schema: public
+insert_permissions:
+  - role: buyco
+    permission:
+      check: {}
+      columns:
+        - id
+        - cnpj
+        - version
+        - year
+        - consulting_companies
+        - consulting_company_client
+        - created_at
+        - updated_at
+        - removed_at
+  - role: buyco_consultant
+    permission:
+      check:
+        consulting_companies:
+          _eq: x-hasura-company-id
+      columns:
+        - id
+        - cnpj
+        - version
+        - year
+        - consulting_companies
+        - consulting_company_client
+        - created_at
+        - updated_at
+        - removed_at
+  - role: buyco_consultant_admin
+    permission:
+      check:
+        consulting_companies:
+          _eq: x-hasura-company-id
+      columns:
+        - id
+        - cnpj
+        - version
+        - year
+        - consulting_companies
+        - consulting_company_client
+        - created_at
+        - updated_at
+        - removed_at
+  - role: external_consultant
+    permission:
+      check:
+        consulting_companies:
+          _eq: x-hasura-company-id
+      columns:
+        - id
+        - cnpj
+        - version
+        - year
+        - consulting_companies
+        - consulting_company_client
+        - created_at
+        - updated_at
+        - removed_at
+  - role: external_consultant_admin
+    permission:
+      check:
+        consulting_companies:
+          _eq: x-hasura-company-id
+      columns:
+        - id
+        - cnpj
+        - version
+        - year
+        - consulting_companies
+        - consulting_company_client
+        - created_at
+        - updated_at
+        - removed_at
+  - role: valuation_client
+    permission:
+      check:
+        id:
+          _eq: x-hasura-valuation-id
+      columns:
+        - id
+        - cnpj
+        - version
+        - year
+        - consulting_companies
+        - consulting_company_client
+        - created_at
+        - updated_at
+        - removed_at
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - year
+        - cnpj
+        - version
+        - created_at
+        - removed_at
+        - updated_at
+        - consulting_companies
+        - consulting_company_client
+        - id
+      filter: {}
+  - role: buyco
+    permission:
+      columns:
+        - year
+        - cnpj
+        - version
+        - created_at
+        - removed_at
+        - updated_at
+        - consulting_companies
+        - consulting_company_client
+        - id
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - cnpj
+        - version
+        - year
+        - consulting_companies
+        - consulting_company_client
+        - created_at
+        - updated_at
+        - removed_at
+      filter:
+        consultantAndValuationRef:
+          consultant:
+            _eq: x-hasura-consultant-id
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - id
+        - cnpj
+        - version
+        - year
+        - consulting_companies
+        - consulting_company_client
+        - created_at
+        - updated_at
+        - removed_at
+      filter:
+        consulting_companies:
+          _eq: x-hasura-company-id
+  - role: external_consultant
+    permission:
+      columns:
+        - id
+        - cnpj
+        - version
+        - year
+        - consulting_companies
+        - consulting_company_client
+        - created_at
+        - updated_at
+        - removed_at
+      filter:
+        consultantAndValuationRef:
+          consultant:
+            _eq: x-hasura-consultant-id
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - id
+        - cnpj
+        - version
+        - year
+        - consulting_companies
+        - consulting_company_client
+        - created_at
+        - updated_at
+        - removed_at
+      filter:
+        consulting_companies:
+          _eq: x-hasura-company-id
+  - role: valuation_client
+    permission:
+      columns:
+        - id
+        - cnpj
+        - version
+        - year
+        - consulting_companies
+        - consulting_company_client
+        - created_at
+        - updated_at
+        - removed_at
+      filter:
+        id:
+          _eq: x-hasura-valuation-id
+      allow_aggregations: true
+update_permissions:
+  - role: buyco
+    permission:
+      columns:
+        - year
+        - cnpj
+        - version
+        - created_at
+        - removed_at
+        - updated_at
+        - consulting_companies
+        - consulting_company_client
+        - id
+      filter: {}
+      check: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - cnpj
+        - version
+        - year
+        - consulting_companies
+        - consulting_company_client
+        - created_at
+        - updated_at
+        - removed_at
+      filter:
+        consultantAndValuationRef:
+          _and:
+            - consultant:
+                _eq: x-hasura-consultant-id
+            - type:
+                _ne: viewer
+      check:
+        consultantAndValuationRef:
+          _and:
+            - consultant:
+                _eq: x-hasura-consultant-id
+            - type:
+                _ne: viewer
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - id
+        - cnpj
+        - version
+        - year
+        - consulting_companies
+        - consulting_company_client
+        - created_at
+        - updated_at
+        - removed_at
+      filter:
+        consulting_companies:
+          _eq: x-hasura-company-id
+      check: null
+  - role: external_consultant
+    permission:
+      columns:
+        - id
+        - cnpj
+        - version
+        - year
+        - consulting_companies
+        - consulting_company_client
+        - created_at
+        - updated_at
+        - removed_at
+      filter:
+        consultantAndValuationRef:
+          _and:
+            - consultant:
+                _eq: x-hasura-consultant-id
+            - type:
+                _ne: viewer
+      check:
+        consultantAndValuationRef:
+          _and:
+            - consultant:
+                _eq: x-hasura-consultant-id
+            - type:
+                _ne: viewer
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - id
+        - cnpj
+        - version
+        - year
+        - consulting_companies
+        - consulting_company_client
+        - created_at
+        - updated_at
+        - removed_at
+      filter:
+        consulting_companies:
+          _eq: x-hasura-company-id
+      check: null
+  - role: valuation_client
+    permission:
+      columns:
+        - id
+        - cnpj
+        - version
+        - year
+        - consulting_companies
+        - consulting_company_client
+        - created_at
+        - updated_at
+        - removed_at
+      filter:
+        id:
+          _eq: x-hasura-valuation-id
+      check: null
+delete_permissions:
+  - role: buyco
+    permission:
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      filter:
+        consultantAndValuationRef:
+          _and:
+            - consultant:
+                _eq: x-hasura-consultant-id
+            - type:
+                _ne: viewer
+  - role: buyco_consultant_admin
+    permission:
+      filter:
+        consulting_companies:
+          _eq: x-hasura-company-id
+  - role: external_consultant
+    permission:
+      filter:
+        consultantAndValuationRef:
+          _and:
+            - consultant:
+                _eq: x-hasura-consultant-id
+            - type:
+                _ne: viewer
+  - role: external_consultant_admin
+    permission:
+      filter:
+        consulting_companies:
+          _eq: x-hasura-company-id
+event_triggers:
+  - name: on_consultive_val_send_email
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+    retry_conf:
+      interval_sec: 10
+      num_retries: 0
+      timeout_sec: 60
+    webhook: https://yras30aqzk.execute-api.us-east-1.amazonaws.com/consultive

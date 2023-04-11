@@ -1,0 +1,11 @@
+table:
+  name: calculator_methods_calculated_type
+  schema: public
+array_relationships:
+  - name: calculator_methods_calculateds
+    using:
+      foreign_key_constraint_on:
+        column: type
+        table:
+          name: calculator_methods_calculated
+          schema: public

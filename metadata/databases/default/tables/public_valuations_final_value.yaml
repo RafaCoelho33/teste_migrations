@@ -1,0 +1,7 @@
+table:
+  name: valuations_final_value
+  schema: public
+object_relationships:
+  - name: valuationByValuation
+    using:
+      foreign_key_constraint_on: valuation

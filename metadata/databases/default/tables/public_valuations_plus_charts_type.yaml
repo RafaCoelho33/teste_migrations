@@ -1,0 +1,43 @@
+table:
+  name: valuations_plus_charts_type
+  schema: public
+is_enum: true
+array_relationships:
+  - name: valuations_plus_charts
+    using:
+      foreign_key_constraint_on:
+        column: type
+        table:
+          name: valuations_plus_charts
+          schema: public
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - description
+        - name
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - description
+        - name
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - description
+        - name
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - description
+        - name
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - description
+        - name
+      filter: {}

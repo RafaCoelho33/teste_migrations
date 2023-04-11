@@ -1,0 +1,331 @@
+table:
+  name: digital_valuation_information
+  schema: public
+object_relationships:
+  - name: companyTypeByCompanyType
+    using:
+      foreign_key_constraint_on: company_type
+  - name: consulting_company
+    using:
+      foreign_key_constraint_on: consulting_companies
+  - name: digitalValuationClientByDigitalValuationClient
+    using:
+      foreign_key_constraint_on: digital_valuation_client
+array_relationships:
+  - name: digital_valuation_cnpjs
+    using:
+      foreign_key_constraint_on:
+        column: digital_valuation_information
+        table:
+          name: digital_valuation_cnpj
+          schema: public
+  - name: digital_valuation_descriptions
+    using:
+      foreign_key_constraint_on:
+        column: valuation_information_id
+        table:
+          name: digital_valuation_descriptions
+          schema: public
+  - name: digital_valuation_differentials
+    using:
+      foreign_key_constraint_on:
+        column: digital_valuation_information
+        table:
+          name: digital_valuation_differentials
+          schema: public
+  - name: digital_valuation_final_values
+    using:
+      foreign_key_constraint_on:
+        column: digital_valuation_information
+        table:
+          name: digital_valuation_final_value
+          schema: public
+  - name: digital_valuation_financial_data
+    using:
+      foreign_key_constraint_on:
+        column: digital_valuation_information
+        table:
+          name: digital_valuation_financial_data
+          schema: public
+  - name: digital_valuation_logs
+    using:
+      foreign_key_constraint_on:
+        column: digital_valuation_information
+        table:
+          name: digital_valuation_log
+          schema: public
+  - name: digital_valuation_methods_calculateds
+    using:
+      foreign_key_constraint_on:
+        column: digital_valuation_information
+        table:
+          name: digital_valuation_methods_calculated
+          schema: public
+insert_permissions:
+  - role: anonymous
+    permission:
+      check: {}
+      columns:
+        - id
+        - version
+        - year
+        - consulting_companies
+        - digital_valuation_client
+        - reason
+        - ecommerce
+        - area
+        - market_time
+        - creation_value
+        - company_type
+        - partners_working
+        - collaborators_working
+        - pdf_url
+        - created_at
+        - updated_at
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - version
+        - year
+        - consulting_companies
+        - digital_valuation_client
+        - reason
+        - ecommerce
+        - area
+        - market_time
+        - creation_value
+        - company_type
+        - partners_working
+        - collaborators_working
+        - pdf_url
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco
+    permission:
+      columns:
+        - consulting_companies
+        - created_at
+        - digital_valuation_client
+        - id
+        - reason
+        - version
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - ecommerce
+        - area
+        - collaborators_working
+        - creation_value
+        - market_time
+        - partners_working
+        - year
+        - pdf_url
+        - reason
+        - version
+        - created_at
+        - updated_at
+        - company_type
+        - consulting_companies
+        - digital_valuation_client
+        - id
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - ecommerce
+        - area
+        - collaborators_working
+        - creation_value
+        - market_time
+        - partners_working
+        - year
+        - pdf_url
+        - reason
+        - version
+        - created_at
+        - updated_at
+        - company_type
+        - consulting_companies
+        - digital_valuation_client
+        - id
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - ecommerce
+        - area
+        - collaborators_working
+        - creation_value
+        - market_time
+        - partners_working
+        - year
+        - pdf_url
+        - reason
+        - version
+        - created_at
+        - updated_at
+        - company_type
+        - consulting_companies
+        - digital_valuation_client
+        - id
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - ecommerce
+        - area
+        - collaborators_working
+        - creation_value
+        - market_time
+        - partners_working
+        - year
+        - pdf_url
+        - reason
+        - version
+        - created_at
+        - updated_at
+        - company_type
+        - consulting_companies
+        - digital_valuation_client
+        - id
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - ecommerce
+        - area
+        - collaborators_working
+        - creation_value
+        - market_time
+        - partners_working
+        - year
+        - pdf_url
+        - reason
+        - version
+        - created_at
+        - updated_at
+        - company_type
+        - consulting_companies
+        - digital_valuation_client
+        - id
+      filter:
+        _and:
+          - consulting_companies:
+              _eq: x-hasura-company-id
+          - digital_valuation_client:
+              _eq: x-hasura-user-id
+update_permissions:
+  - role: buyco_consultant
+    permission:
+      columns:
+        - ecommerce
+        - area
+        - collaborators_working
+        - creation_value
+        - market_time
+        - partners_working
+        - year
+        - pdf_url
+        - reason
+        - version
+        - created_at
+        - updated_at
+        - company_type
+        - consulting_companies
+        - digital_valuation_client
+        - id
+      filter: {}
+      check: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - ecommerce
+        - area
+        - collaborators_working
+        - creation_value
+        - market_time
+        - partners_working
+        - year
+        - pdf_url
+        - reason
+        - version
+        - created_at
+        - updated_at
+        - company_type
+        - consulting_companies
+        - digital_valuation_client
+        - id
+      filter: {}
+      check: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - ecommerce
+        - area
+        - collaborators_working
+        - creation_value
+        - market_time
+        - partners_working
+        - year
+        - pdf_url
+        - reason
+        - version
+        - created_at
+        - updated_at
+        - company_type
+        - consulting_companies
+        - digital_valuation_client
+        - id
+      filter: {}
+      check: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - ecommerce
+        - area
+        - collaborators_working
+        - creation_value
+        - market_time
+        - partners_working
+        - year
+        - pdf_url
+        - reason
+        - version
+        - created_at
+        - updated_at
+        - company_type
+        - consulting_companies
+        - digital_valuation_client
+        - id
+      filter: {}
+      check: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - id
+        - version
+        - year
+        - consulting_companies
+        - digital_valuation_client
+        - reason
+        - ecommerce
+        - area
+        - market_time
+        - creation_value
+        - company_type
+        - partners_working
+        - collaborators_working
+        - pdf_url
+        - created_at
+        - updated_at
+      filter:
+        _and:
+          - consulting_companies:
+              _eq: x-hasura-company-id
+          - digital_valuation_client:
+              _eq: x-hasura-user-id
+      check: {}

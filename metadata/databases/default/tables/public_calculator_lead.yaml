@@ -1,0 +1,80 @@
+table:
+  name: calculator_lead
+  schema: public
+object_relationships:
+  - name: calculator_profile
+    using:
+      foreign_key_constraint_on: profile
+  - name: calculator_whatsapp_checker
+    using:
+      foreign_key_constraint_on:
+        column: lead
+        table:
+          name: calculator_whatsapp_checker
+          schema: public
+  - name: cityByCity
+    using:
+      foreign_key_constraint_on: city
+array_relationships:
+  - name: calculator_company_data
+    using:
+      foreign_key_constraint_on:
+        column: lead
+        table:
+          name: calculator_company_data
+          schema: public
+  - name: calculator_final_values
+    using:
+      foreign_key_constraint_on:
+        column: lead
+        table:
+          name: calculator_final_value
+          schema: public
+  - name: calculator_methods_calculateds
+    using:
+      foreign_key_constraint_on:
+        column: lead
+        table:
+          name: calculator_methods_calculated
+          schema: public
+  - name: calculator_values
+    using:
+      foreign_key_constraint_on:
+        column: lead
+        table:
+          name: calculator_values
+          schema: public
+insert_permissions:
+  - role: anonymous
+    permission:
+      check: {}
+      columns:
+        - id
+        - computer_id
+        - profile
+        - name
+        - email
+        - phone
+        - city
+        - source
+        - medium
+        - campaign
+        - created_at
+        - updated_at
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+      filter: {}
+event_triggers:
+  - name: on_calc_lead_insert
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+    retry_conf:
+      interval_sec: 10
+      num_retries: 0
+      timeout_sec: 60
+    webhook: https://ns9rdflr61.execute-api.us-east-1.amazonaws.com/on_calc_lead_insert

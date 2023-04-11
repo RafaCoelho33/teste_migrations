@@ -1,0 +1,81 @@
+table:
+  name: target_audiences
+  schema: public
+array_relationships:
+  - name: sectorAnalysis
+    using:
+      foreign_key_constraint_on:
+        column: target_audiences
+        table:
+          name: sector_analysis_and_target_audiences
+          schema: public
+insert_permissions:
+  - role: buyco
+    permission:
+      check: {}
+      columns:
+        - id
+        - name
+        - created_at
+        - updated_at
+  - role: buyco_consultant_admin
+    permission:
+      check: {}
+      columns:
+        - id
+        - name
+        - created_at
+        - updated_at
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - name
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco
+    permission:
+      columns:
+        - id
+        - name
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - name
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - id
+        - name
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: external_consultant
+    permission:
+      columns:
+        - id
+        - name
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - id
+        - name
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true

@@ -1,0 +1,52 @@
+table:
+  name: digital_valuation_financial_data
+  schema: public
+object_relationships:
+  - name: digitalValuationInformationByDigitalValuationInformation
+    using:
+      foreign_key_constraint_on: digital_valuation_information
+  - name: valuations_financial_data_type
+    using:
+      foreign_key_constraint_on: financial_data_type
+insert_permissions:
+  - role: anonymous
+    permission:
+      check: {}
+      columns:
+        - id
+        - digital_valuation_information
+        - financial_data_type
+        - value
+        - created_at
+        - updated_at
+  - role: valuation_client
+    permission:
+      check: {}
+      columns:
+        - id
+        - digital_valuation_information
+        - financial_data_type
+        - value
+        - created_at
+        - updated_at
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - digital_valuation_information
+        - financial_data_type
+        - value
+        - created_at
+        - updated_at
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - value
+        - created_at
+        - updated_at
+        - digital_valuation_information
+        - financial_data_type
+        - id
+      filter: {}

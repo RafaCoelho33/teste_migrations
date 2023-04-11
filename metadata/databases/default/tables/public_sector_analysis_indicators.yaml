@@ -1,0 +1,137 @@
+table:
+  name: sector_analysis_indicators
+  schema: public
+object_relationships:
+  - name: sectorAnalysisIndicatorsType
+    using:
+      foreign_key_constraint_on: type
+  - name: sectorAnalysisRef
+    using:
+      foreign_key_constraint_on: sector_analysis
+insert_permissions:
+  - role: buyco
+    permission:
+      check: {}
+      columns:
+        - value
+        - year
+        - type
+        - created_at
+        - updated_at
+        - id
+        - sector_analysis
+  - role: buyco_consultant_admin
+    permission:
+      check: {}
+      columns:
+        - id
+        - sector_analysis
+        - year
+        - value
+        - type
+        - created_at
+        - updated_at
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - sector_analysis
+        - year
+        - value
+        - type
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco
+    permission:
+      columns:
+        - id
+        - sector_analysis
+        - year
+        - value
+        - type
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - sector_analysis
+        - year
+        - value
+        - type
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - id
+        - sector_analysis
+        - year
+        - value
+        - type
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: external_consultant
+    permission:
+      columns:
+        - id
+        - sector_analysis
+        - year
+        - value
+        - type
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - id
+        - sector_analysis
+        - year
+        - value
+        - type
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+update_permissions:
+  - role: buyco
+    permission:
+      columns:
+        - value
+        - year
+        - type
+        - created_at
+        - updated_at
+        - id
+        - sector_analysis
+      filter: {}
+      check: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - id
+        - sector_analysis
+        - year
+        - value
+        - type
+        - created_at
+        - updated_at
+      filter: {}
+      check: null
+delete_permissions:
+  - role: buyco
+    permission:
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      filter: {}

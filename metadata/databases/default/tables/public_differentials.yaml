@@ -1,0 +1,111 @@
+table:
+  name: differentials
+  schema: public
+object_relationships:
+  - name: sectorRef
+    using:
+      foreign_key_constraint_on: sector
+array_relationships:
+  - name: digital_valuation_differentials
+    using:
+      foreign_key_constraint_on:
+        column: differentials
+        table:
+          name: digital_valuation_differentials
+          schema: public
+  - name: valuations_and_differentials
+    using:
+      foreign_key_constraint_on:
+        column: differential
+        table:
+          name: valuations_and_differentials
+          schema: public
+insert_permissions:
+  - role: buyco_consultant_admin
+    permission:
+      check: {}
+      columns:
+        - id
+        - description
+        - sector
+        - created_at
+        - updated_at
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - description
+        - sector
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco
+    permission:
+      columns:
+        - id
+        - description
+        - sector
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - description
+        - sector
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - id
+        - description
+        - sector
+        - created_at
+        - updated_at
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - id
+        - description
+        - sector
+        - created_at
+        - updated_at
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - id
+        - description
+        - sector
+        - created_at
+        - updated_at
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - id
+        - description
+        - sector
+        - created_at
+        - updated_at
+      filter: {}
+update_permissions:
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - id
+        - description
+        - sector
+        - created_at
+        - updated_at
+      filter: {}
+      check: null
+delete_permissions:
+  - role: buyco_consultant_admin
+    permission:
+      filter: {}

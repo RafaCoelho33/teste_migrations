@@ -1,0 +1,141 @@
+table:
+  name: sector_analysis_activities
+  schema: public
+object_relationships:
+  - name: sectorAnalysisRef
+    using:
+      foreign_key_constraint_on: sector_analysis
+array_relationships:
+  - name: valuations_and_activities
+    using:
+      foreign_key_constraint_on:
+        column: activity
+        table:
+          name: valuations_and_activities
+          schema: public
+insert_permissions:
+  - role: buyco
+    permission:
+      check: {}
+      columns:
+        - image
+        - created_at
+        - updated_at
+        - id
+        - sector_analysis
+        - name
+        - text
+  - role: buyco_consultant_admin
+    permission:
+      check: {}
+      columns:
+        - id
+        - name
+        - text
+        - image
+        - created_at
+        - updated_at
+        - sector_analysis
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - name
+        - text
+        - image
+        - created_at
+        - updated_at
+        - sector_analysis
+      filter: {}
+  - role: buyco
+    permission:
+      columns:
+        - id
+        - name
+        - text
+        - image
+        - created_at
+        - updated_at
+        - sector_analysis
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - name
+        - text
+        - image
+        - created_at
+        - updated_at
+        - sector_analysis
+      filter: {}
+      allow_aggregations: true
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - id
+        - name
+        - text
+        - image
+        - created_at
+        - updated_at
+        - sector_analysis
+      filter: {}
+      allow_aggregations: true
+  - role: external_consultant
+    permission:
+      columns:
+        - id
+        - name
+        - text
+        - image
+        - created_at
+        - updated_at
+        - sector_analysis
+      filter: {}
+      allow_aggregations: true
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - id
+        - name
+        - text
+        - image
+        - created_at
+        - updated_at
+        - sector_analysis
+      filter: {}
+      allow_aggregations: true
+update_permissions:
+  - role: buyco
+    permission:
+      columns:
+        - image
+        - created_at
+        - updated_at
+        - id
+        - sector_analysis
+        - name
+        - text
+      filter: {}
+      check: null
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - id
+        - name
+        - text
+        - image
+        - created_at
+        - updated_at
+        - sector_analysis
+      filter: {}
+      check: null
+delete_permissions:
+  - role: buyco
+    permission:
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      filter: {}

@@ -1,0 +1,40 @@
+table:
+  name: calculator_company_data
+  schema: public
+object_relationships:
+  - name: calculator_lead
+    using:
+      foreign_key_constraint_on: lead
+  - name: company_type
+    using:
+      foreign_key_constraint_on: type
+array_relationships:
+  - name: reasons
+    using:
+      manual_configuration:
+        column_mapping:
+          type: value
+        insertion_order: null
+        remote_table:
+          name: reasons_type
+          schema: public
+insert_permissions:
+  - role: anonymous
+    permission:
+      check: {}
+      columns:
+        - id
+        - lead
+        - age
+        - cnpj
+        - share_capital
+        - type
+        - other_type
+        - created_at
+        - updated_at
+        - reason
+        - other_reason
+        - company_name
+        - employees
+        - company_moment
+        - trademark

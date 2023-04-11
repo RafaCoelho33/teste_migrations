@@ -1,0 +1,202 @@
+table:
+  name: valuations_cnpj_simples_nacional
+  schema: public
+object_relationships:
+  - name: valuationByValuation
+    using:
+      foreign_key_constraint_on: valuation
+select_permissions:
+  - role: buyco_consultant
+    permission:
+      columns:
+        - valuation
+        - last_update
+        - simples_optant
+        - simples_included
+        - simples_excluded
+        - simei_optant
+        - created_at
+        - updated_at
+      filter:
+        valuationByValuation:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+      allow_aggregations: true
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - valuation
+        - last_update
+        - simples_optant
+        - simples_included
+        - simples_excluded
+        - simei_optant
+        - created_at
+        - updated_at
+      filter:
+        valuationByValuation:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      allow_aggregations: true
+  - role: external_consultant
+    permission:
+      columns:
+        - valuation
+        - last_update
+        - simples_optant
+        - simples_included
+        - simples_excluded
+        - simei_optant
+        - created_at
+        - updated_at
+      filter:
+        valuationByValuation:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+      allow_aggregations: true
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - valuation
+        - last_update
+        - simples_optant
+        - simples_included
+        - simples_excluded
+        - simei_optant
+        - created_at
+        - updated_at
+      filter:
+        valuationByValuation:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      allow_aggregations: true
+  - role: valuation_client
+    permission:
+      columns:
+        - valuation
+        - last_update
+        - simples_optant
+        - simples_included
+        - simples_excluded
+        - simei_optant
+        - created_at
+        - updated_at
+      filter:
+        valuation:
+          _eq: x-hasura-valuation-id
+update_permissions:
+  - role: buyco_consultant
+    permission:
+      columns:
+        - valuation
+        - last_update
+        - simples_optant
+        - simples_included
+        - simples_excluded
+        - simei_optant
+        - created_at
+        - updated_at
+      filter:
+        valuationByValuation:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+      check: null
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - valuation
+        - last_update
+        - simples_optant
+        - simples_included
+        - simples_excluded
+        - simei_optant
+        - created_at
+        - updated_at
+      filter:
+        valuationByValuation:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      check: null
+  - role: external_consultant
+    permission:
+      columns:
+        - valuation
+        - last_update
+        - simples_optant
+        - simples_included
+        - simples_excluded
+        - simei_optant
+        - created_at
+        - updated_at
+      filter:
+        valuationByValuation:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+      check: null
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - valuation
+        - last_update
+        - simples_optant
+        - simples_included
+        - simples_excluded
+        - simei_optant
+        - created_at
+        - updated_at
+      filter:
+        valuationByValuation:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      check: null
+  - role: valuation_client
+    permission:
+      columns:
+        - valuation
+        - last_update
+        - simples_optant
+        - simples_included
+        - simples_excluded
+        - simei_optant
+        - created_at
+        - updated_at
+      filter:
+        valuation:
+          _eq: x-hasura-valuation-id
+      check: null
+delete_permissions:
+  - role: buyco_consultant
+    permission:
+      filter:
+        valuationByValuation:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+  - role: buyco_consultant_admin
+    permission:
+      filter:
+        valuationByValuation:
+          consulting_companies:
+            _eq: x-hasura-company-id
+  - role: external_consultant
+    permission:
+      filter:
+        valuationByValuation:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+  - role: external_consultant_admin
+    permission:
+      filter:
+        valuationByValuation:
+          consulting_companies:
+            _eq: x-hasura-company-id
+  - role: valuation_client
+    permission:
+      filter:
+        valuation:
+          _eq: x-hasura-valuation-id

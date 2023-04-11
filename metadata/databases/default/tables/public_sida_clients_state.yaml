@@ -1,0 +1,7 @@
+table:
+  name: sida_clients_state
+  schema: public
+object_relationships:
+  - name: consulting_company_client
+    using:
+      foreign_key_constraint_on: client_id

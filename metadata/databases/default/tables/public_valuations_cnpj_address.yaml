@@ -1,0 +1,356 @@
+table:
+  name: valuations_cnpj_address
+  schema: public
+object_relationships:
+  - name: valuationRef
+    using:
+      foreign_key_constraint_on: valuation
+insert_permissions:
+  - role: buyco_consultant
+    permission:
+      check:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      columns:
+        - id
+        - valuation
+        - public_place
+        - number
+        - district
+        - city
+        - country
+        - zip_code
+        - formatted_address
+        - map
+        - created_at
+        - updated_at
+        - state
+        - complement
+  - role: buyco_consultant_admin
+    permission:
+      check:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      columns:
+        - city
+        - complement
+        - country
+        - district
+        - formatted_address
+        - map
+        - number
+        - public_place
+        - state
+        - zip_code
+        - created_at
+        - updated_at
+        - id
+        - valuation
+  - role: external_consultant
+    permission:
+      check:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      columns:
+        - id
+        - valuation
+        - public_place
+        - number
+        - district
+        - city
+        - country
+        - zip_code
+        - formatted_address
+        - map
+        - created_at
+        - updated_at
+        - state
+        - complement
+  - role: external_consultant_admin
+    permission:
+      check:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      columns:
+        - city
+        - complement
+        - country
+        - district
+        - formatted_address
+        - map
+        - number
+        - public_place
+        - state
+        - zip_code
+        - created_at
+        - updated_at
+        - id
+        - valuation
+  - role: valuation_client
+    permission:
+      check:
+        valuation:
+          _eq: x-hasura-valuation-id
+      columns:
+        - id
+        - valuation
+        - public_place
+        - number
+        - district
+        - city
+        - country
+        - zip_code
+        - formatted_address
+        - map
+        - created_at
+        - updated_at
+        - state
+        - complement
+select_permissions:
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - valuation
+        - public_place
+        - number
+        - district
+        - city
+        - country
+        - zip_code
+        - formatted_address
+        - map
+        - created_at
+        - updated_at
+        - state
+        - complement
+      filter:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      allow_aggregations: true
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - city
+        - complement
+        - country
+        - district
+        - formatted_address
+        - map
+        - number
+        - public_place
+        - state
+        - zip_code
+        - created_at
+        - updated_at
+        - id
+        - valuation
+      filter:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      allow_aggregations: true
+  - role: external_consultant
+    permission:
+      columns:
+        - id
+        - valuation
+        - public_place
+        - number
+        - district
+        - city
+        - country
+        - zip_code
+        - formatted_address
+        - map
+        - created_at
+        - updated_at
+        - state
+        - complement
+      filter:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      allow_aggregations: true
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - city
+        - complement
+        - country
+        - district
+        - formatted_address
+        - map
+        - number
+        - public_place
+        - state
+        - zip_code
+        - created_at
+        - updated_at
+        - id
+        - valuation
+      filter:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      allow_aggregations: true
+  - role: valuation_client
+    permission:
+      columns:
+        - id
+        - valuation
+        - public_place
+        - number
+        - district
+        - city
+        - country
+        - zip_code
+        - formatted_address
+        - map
+        - created_at
+        - updated_at
+        - state
+        - complement
+      filter:
+        valuation:
+          _eq: x-hasura-valuation-id
+update_permissions:
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - valuation
+        - public_place
+        - number
+        - district
+        - city
+        - country
+        - zip_code
+        - formatted_address
+        - map
+        - created_at
+        - updated_at
+        - state
+        - complement
+      filter:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      check: null
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - city
+        - complement
+        - country
+        - district
+        - formatted_address
+        - map
+        - number
+        - public_place
+        - state
+        - zip_code
+        - created_at
+        - updated_at
+        - id
+        - valuation
+      filter:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      check: null
+  - role: external_consultant
+    permission:
+      columns:
+        - id
+        - valuation
+        - public_place
+        - number
+        - district
+        - city
+        - country
+        - zip_code
+        - formatted_address
+        - map
+        - created_at
+        - updated_at
+        - state
+        - complement
+      filter:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      check: null
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - city
+        - complement
+        - country
+        - district
+        - formatted_address
+        - map
+        - number
+        - public_place
+        - state
+        - zip_code
+        - created_at
+        - updated_at
+        - id
+        - valuation
+      filter:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      check: null
+  - role: valuation_client
+    permission:
+      columns:
+        - id
+        - valuation
+        - public_place
+        - number
+        - district
+        - city
+        - country
+        - zip_code
+        - formatted_address
+        - map
+        - created_at
+        - updated_at
+        - state
+        - complement
+      filter:
+        valuation:
+          _eq: x-hasura-valuation-id
+      check: null
+delete_permissions:
+  - role: buyco_consultant
+    permission:
+      filter:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+  - role: buyco_consultant_admin
+    permission:
+      filter:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+  - role: external_consultant
+    permission:
+      filter:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id
+  - role: external_consultant_admin
+    permission:
+      filter:
+        valuationRef:
+          consulting_companies:
+            _eq: x-hasura-company-id

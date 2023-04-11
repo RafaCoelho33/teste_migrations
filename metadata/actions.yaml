@@ -1,0 +1,421 @@
+actions:
+  - name: AdvertisementCreator
+    definition:
+      kind: synchronous
+      handler: https://fh812h0d55.execute-api.us-east-1.amazonaws.com/
+    permissions:
+      - role: buyco_consultant
+      - role: buyco_consultant_admin
+      - role: external_consultant
+      - role: external_consultant_admin
+  - name: BusinessValuationCode
+    definition:
+      kind: synchronous
+      handler: https://ow3zujcdy0.execute-api.us-east-1.amazonaws.com/costumer/validate_verification_code
+    permissions:
+      - role: anonymous
+  - name: BusinessValuationLogin
+    definition:
+      kind: synchronous
+      handler: https://ow3zujcdy0.execute-api.us-east-1.amazonaws.com/costumer/verify_email
+    permissions:
+      - role: anonymous
+  - name: BusinessValuationNew
+    definition:
+      kind: synchronous
+      handler: https://229mgobobf.execute-api.us-east-1.amazonaws.com/valuation/new
+    permissions:
+      - role: valuation_client
+      - role: anonymous
+  - name: BusinessValuationStart
+    definition:
+      kind: synchronous
+      handler: https://229mgobobf.execute-api.us-east-1.amazonaws.com/valuation/start
+    permissions:
+      - role: valuation_client
+  - name: BusinessValuationVoucher
+    definition:
+      kind: synchronous
+      handler: https://229mgobobf.execute-api.us-east-1.amazonaws.com/valuation/voucher
+    permissions:
+      - role: external_consultant_admin
+      - role: external_consultant
+      - role: anonymous
+      - role: buyco_consultant_admin
+      - role: buyco_consultant
+      - role: valuation_client
+  - name: CreateMarket
+    definition:
+      kind: synchronous
+      handler: https://imgiuvgmnc.execute-api.us-east-1.amazonaws.com/dev/createMarket
+      forward_client_headers: true
+    permissions:
+      - role: buyco_consultant
+      - role: buyco_consultant_admin
+      - role: external_consultant
+      - role: external_consultant_admin
+      - role: valuation_client
+  - name: CreateProfileTest
+    definition:
+      kind: synchronous
+      handler: https://karw2z5wh0.execute-api.us-east-1.amazonaws.com/entrada
+    permissions:
+      - role: anonymous
+  - name: CreateValuation
+    definition:
+      kind: synchronous
+      handler: https://imgiuvgmnc.execute-api.us-east-1.amazonaws.com/dev/newValuation
+      forward_client_headers: true
+    permissions:
+      - role: buyco_consultant
+      - role: buyco_consultant_admin
+      - role: external_consultant
+      - role: external_consultant_admin
+  - name: DeleteValuation
+    definition:
+      kind: synchronous
+      handler: https://imgiuvgmnc.execute-api.us-east-1.amazonaws.com/dev/deleteValuation
+    permissions:
+      - role: buyco_consultant
+      - role: buyco_consultant_admin
+      - role: external_consultant
+      - role: external_consultant_admin
+  - name: DigitalValuationCreate
+    definition:
+      kind: synchronous
+      handler: https://imgiuvgmnc.execute-api.us-east-1.amazonaws.com/dev/digitalValuationCreate
+    permissions:
+      - role: valuation_client
+      - role: anonymous
+  - name: EraseWrongEmail
+    definition:
+      kind: synchronous
+      handler: https://karw2z5wh0.execute-api.us-east-1.amazonaws.com/reenviar
+    permissions:
+      - role: anonymous
+  - name: FinishDataColect
+    definition:
+      kind: synchronous
+      handler: https://imgiuvgmnc.execute-api.us-east-1.amazonaws.com/dev/finishValuationColect
+      forward_client_headers: true
+    permissions:
+      - role: valuation_client
+  - name: GeneratePDF
+    definition:
+      kind: synchronous
+      handler: https://imgiuvgmnc.execute-api.us-east-1.amazonaws.com/dev/generatePDF
+      forward_client_headers: true
+    permissions:
+      - role: buyco_consultant
+      - role: buyco_consultant_admin
+      - role: external_consultant
+      - role: external_consultant_admin
+  - name: GenerateValue
+    definition:
+      kind: synchronous
+      handler: https://imgiuvgmnc.execute-api.us-east-1.amazonaws.com/dev/generateValue
+      forward_client_headers: true
+    permissions:
+      - role: buyco_consultant
+      - role: buyco_consultant_admin
+      - role: external_consultant
+      - role: external_consultant_admin
+  - name: GetCompanyTypes
+    definition:
+      kind: ""
+      handler: https://oxdruvdkw1.execute-api.us-east-1.amazonaws.com/
+    permissions:
+      - role: anonymous
+  - name: GetConsultantBalanceSheet
+    definition:
+      kind: ""
+      handler: https://imgiuvgmnc.execute-api.us-east-1.amazonaws.com/dev/getConsultantBalaceSheet
+    permissions:
+      - role: valuation_client
+      - role: external_consultant_admin
+      - role: external_consultant
+      - role: buyco_consultant_admin
+      - role: buyco_consultant
+  - name: GetConsultantDRE
+    definition:
+      kind: ""
+      handler: https://imgiuvgmnc.execute-api.us-east-1.amazonaws.com/dev/getConsultantDRE
+    permissions:
+      - role: buyco_consultant
+      - role: buyco_consultant_admin
+      - role: external_consultant
+      - role: external_consultant_admin
+      - role: valuation_client
+  - name: GetGeneratedValue
+    definition:
+      kind: ""
+      handler: https://imgiuvgmnc.execute-api.us-east-1.amazonaws.com/dev/getGeneratedValue
+      forward_client_headers: true
+    permissions:
+      - role: buyco_consultant
+      - role: buyco_consultant_admin
+      - role: external_consultant
+      - role: external_consultant_admin
+  - name: GetGenericPDFURL
+    definition:
+      kind: ""
+      handler: https://imgiuvgmnc.execute-api.us-east-1.amazonaws.com/dev/getGenericPDFURL
+    permissions:
+      - role: valuation_client
+      - role: anonymous
+  - name: GetPDFURL
+    definition:
+      kind: ""
+      handler: https://imgiuvgmnc.execute-api.us-east-1.amazonaws.com/dev/getPDFURL
+      forward_client_headers: true
+    permissions:
+      - role: buyco_consultant
+      - role: buyco_consultant_admin
+      - role: external_consultant
+      - role: external_consultant_admin
+  - name: GetPDFURLcalculator
+    definition:
+      kind: ""
+      handler: https://imgiuvgmnc.execute-api.us-east-1.amazonaws.com/dev/getPDFURLcalculator
+    permissions:
+      - role: buyco_consultant_admin
+      - role: external_consultant_admin
+  - name: GetSidaClientHistory
+    definition:
+      kind: ""
+      handler: https://m7ahtzxyy6.execute-api.us-east-1.amazonaws.com/getHistory
+    permissions:
+      - role: external_consultant_admin
+      - role: external_consultant
+      - role: buyco_consultant_admin
+      - role: buyco_consultant
+      - role: anonymous
+  - name: GetSidaClientState
+    definition:
+      kind: ""
+      handler: https://m7ahtzxyy6.execute-api.us-east-1.amazonaws.com/getState
+    permissions:
+      - role: external_consultant_admin
+      - role: external_consultant
+      - role: buyco_consultant_admin
+      - role: buyco_consultant
+      - role: anonymous
+  - name: Login
+    definition:
+      kind: synchronous
+      handler: https://lgq35a9s8l.execute-api.us-east-1.amazonaws.com/dev/login
+    permissions:
+      - role: anonymous
+  - name: LoginColect
+    definition:
+      kind: synchronous
+      handler: https://lgq35a9s8l.execute-api.us-east-1.amazonaws.com/dev/loginColect
+      forward_client_headers: true
+    permissions:
+      - role: anonymous
+  - name: MarketplaceChangePassword
+    definition:
+      kind: synchronous
+      handler: https://lgq35a9s8l.execute-api.us-east-1.amazonaws.com/dev/changePassword
+    permissions:
+      - role: external_consultant_admin
+      - role: external_consultant
+      - role: buyco_consultant_admin
+      - role: buyco_consultant
+      - role: valuation_client
+      - role: anonymous
+  - name: MarketplaceChangeSensitiveInformation
+    definition:
+      kind: synchronous
+      handler: https://lgq35a9s8l.execute-api.us-east-1.amazonaws.com/dev/changeSensitiveInformation
+    permissions:
+      - role: anonymous
+  - name: MarketplaceCheckCode
+    definition:
+      kind: synchronous
+      handler: https://lgq35a9s8l.execute-api.us-east-1.amazonaws.com/dev/checkCode
+    permissions:
+      - role: anonymous
+  - name: MarketplaceCheckSMSCode
+    definition:
+      kind: synchronous
+      handler: https://lgq35a9s8l.execute-api.us-east-1.amazonaws.com/dev/checkSMSCode
+  - name: MarketplaceCheckToken
+    definition:
+      kind: ""
+      handler: https://lgq35a9s8l.execute-api.us-east-1.amazonaws.com/dev/checkToken
+    permissions:
+      - role: anonymous
+  - name: MarketplaceCreateCode
+    definition:
+      kind: synchronous
+      handler: https://lgq35a9s8l.execute-api.us-east-1.amazonaws.com/dev/createCode
+    permissions:
+      - role: anonymous
+  - name: MarketplaceCreateSMSCode
+    definition:
+      kind: synchronous
+      handler: https://lgq35a9s8l.execute-api.us-east-1.amazonaws.com/dev/createSMSCode
+  - name: MarketplaceCreateToken
+    definition:
+      kind: synchronous
+      handler: https://lgq35a9s8l.execute-api.us-east-1.amazonaws.com/dev/createToken
+    permissions:
+      - role: anonymous
+  - name: MarketplaceEmailCheck
+    definition:
+      kind: synchronous
+      handler: https://lgq35a9s8l.execute-api.us-east-1.amazonaws.com/dev/emailCheck
+    permissions:
+      - role: anonymous
+  - name: MarketplaceForgotPassword
+    definition:
+      kind: synchronous
+      handler: https://lgq35a9s8l.execute-api.us-east-1.amazonaws.com/dev/forgotPassword
+    permissions:
+      - role: anonymous
+  - name: NewProjectionSheet
+    definition:
+      kind: synchronous
+      handler: https://imgiuvgmnc.execute-api.us-east-1.amazonaws.com/dev/createProjectionSheet
+    permissions:
+      - role: valuation_client
+      - role: external_consultant_admin
+      - role: external_consultant
+      - role: buyco_consultant_admin
+      - role: buyco_consultant
+    comment: Cria uma planilha de projeção para uma avaliação Plus
+  - name: SaveProjectionSheet
+    definition:
+      kind: synchronous
+      handler: https://imgiuvgmnc.execute-api.us-east-1.amazonaws.com/dev/saveFromProjectionSheet
+    permissions:
+      - role: valuation_client
+      - role: external_consultant_admin
+      - role: external_consultant
+      - role: buyco_consultant_admin
+      - role: buyco_consultant
+    comment: Sava as informações da planilha de projeção na base de dados
+  - name: SendEmailSida
+    definition:
+      kind: synchronous
+      handler: https://imgiuvgmnc.execute-api.us-east-1.amazonaws.com/dev/sendEmailSida
+      forward_client_headers: true
+    permissions:
+      - role: buyco_consultant
+      - role: buyco_consultant_admin
+      - role: external_consultant
+      - role: external_consultant_admin
+  - name: SendEmailSidaContador
+    definition:
+      kind: synchronous
+      handler: https://imgiuvgmnc.execute-api.us-east-1.amazonaws.com/dev/sendEmailSidaContador
+    permissions:
+      - role: valuation_client
+  - name: SetSidaClientPayment
+    definition:
+      kind: synchronous
+      handler: https://m7ahtzxyy6.execute-api.us-east-1.amazonaws.com/setPayment
+    permissions:
+      - role: external_consultant_admin
+      - role: external_consultant
+      - role: buyco_consultant_admin
+      - role: buyco_consultant
+      - role: anonymous
+  - name: Signup
+    definition:
+      kind: synchronous
+      handler: https://lgq35a9s8l.execute-api.us-east-1.amazonaws.com/dev/signup
+    permissions:
+      - role: anonymous
+  - name: SolicitarRevisao
+    definition:
+      kind: synchronous
+      handler: https://imgiuvgmnc.execute-api.us-east-1.amazonaws.com/dev/solicitarRevisao
+      forward_client_headers: true
+    permissions:
+      - role: buyco_consultant
+      - role: buyco_consultant_admin
+      - role: external_consultant
+      - role: external_consultant_admin
+  - name: StartCalculator
+    definition:
+      kind: synchronous
+      handler: https://imgiuvgmnc.execute-api.us-east-1.amazonaws.com/dev/calculadoraPDF
+    permissions:
+      - role: anonymous
+  - name: StartCalculatorAcelerador
+    definition:
+      kind: synchronous
+      handler: https://imgiuvgmnc.execute-api.us-east-1.amazonaws.com/dev/calculadoraAcelerador
+    permissions:
+      - role: anonymous
+  - name: SwitchSidaClientLock
+    definition:
+      kind: synchronous
+      handler: https://m7ahtzxyy6.execute-api.us-east-1.amazonaws.com/switchLock
+    permissions:
+      - role: external_consultant_admin
+      - role: external_consultant
+      - role: buyco_consultant_admin
+      - role: buyco_consultant
+      - role: anonymous
+  - name: UpdateAddress
+    definition:
+      kind: synchronous
+      handler: https://imgiuvgmnc.execute-api.us-east-1.amazonaws.com/dev/updateAddress
+    permissions:
+      - role: buyco_consultant
+      - role: buyco_consultant_admin
+      - role: external_consultant
+      - role: external_consultant_admin
+  - name: UpdateProjectionSheet
+    definition:
+      kind: synchronous
+      handler: https://imgiuvgmnc.execute-api.us-east-1.amazonaws.com/dev/updateProjectionSheet
+    permissions:
+      - role: valuation_client
+      - role: external_consultant_admin
+      - role: external_consultant
+      - role: buyco_consultant_admin
+      - role: buyco_consultant
+    comment: Atualiza as informações da planilha de projeção com as informações da base de dados
+custom_types:
+  enums: []
+  input_objects: []
+  objects:
+    - name: CreateUserOutput
+    - name: JsonWebToken
+    - name: LoginOutput
+    - name: createdValuation
+    - name: updatedAddress
+    - name: deletedValuation
+    - name: createdMarket
+    - name: GeneratedValue
+    - name: GenerateValueId
+    - name: Url
+    - name: SendEmailSida
+    - name: entradaId
+    - name: rows_affected
+    - name: SchemeOutput
+    - name: Output
+    - name: GetConsultantDREOutput
+    - name: ClientState
+    - name: Finished
+    - name: Historic
+    - name: setPaymentOutput
+    - name: switchLockOutput
+    - name: MarketplaceCommonResponse
+    - name: MarketplaceCheckCodeResponse
+    - name: MarketplaceCreateSMSCodeResponse
+    - name: MarketplaceCheckSMSCodeResponse
+    - name: MarketplaceCreateTokenResponse
+    - name: MarketplaceCheckTokenResponse
+    - name: MarketplaceChangeSensitiveInformationResponse
+    - name: BusinessValuationLoginResponse
+    - name: BusinessValuationToken
+    - name: BusinessValualuationNewResponse
+    - name: BusinessValualuationStartResponse
+    - name: GenericResponse
+    - name: BusinessValualuationVoucherResponse
+  scalars: []

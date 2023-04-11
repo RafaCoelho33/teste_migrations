@@ -1,0 +1,11 @@
+table:
+  name: valuations_external_ids_types
+  schema: public
+array_relationships:
+  - name: valuations_external_ids
+    using:
+      foreign_key_constraint_on:
+        column: external_id_type
+        table:
+          name: valuations_external_ids
+          schema: public

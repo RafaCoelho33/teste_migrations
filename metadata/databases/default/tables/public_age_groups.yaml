@@ -1,0 +1,60 @@
+table:
+  name: age_groups
+  schema: public
+array_relationships:
+  - name: sectorAnalysis
+    using:
+      foreign_key_constraint_on:
+        column: age_groups
+        table:
+          name: sector_analysis_and_age_groups
+          schema: public
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - name
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco
+    permission:
+      columns:
+        - id
+        - name
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - name
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - id
+        - name
+        - created_at
+        - updated_at
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - id
+        - name
+        - created_at
+        - updated_at
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - id
+        - name
+        - created_at
+        - updated_at
+      filter: {}

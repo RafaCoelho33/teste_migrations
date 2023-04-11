@@ -1,0 +1,51 @@
+table:
+  name: calculator_profiles
+  schema: public
+array_relationships:
+  - name: calculator_leads
+    using:
+      foreign_key_constraint_on:
+        column: profile
+        table:
+          name: calculator_lead
+          schema: public
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - call_to_action
+        - created_at
+        - description
+        - id
+        - name
+        - text
+        - time
+        - updated_at
+        - url
+        - video
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - id
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - id
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - id
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - id
+      filter: {}

@@ -1,0 +1,102 @@
+table:
+  name: company_types
+  schema: public
+object_relationships:
+  - name: branchByBranch
+    using:
+      foreign_key_constraint_on: branch
+array_relationships:
+  - name: calculator_company_data
+    using:
+      foreign_key_constraint_on:
+        column: type
+        table:
+          name: calculator_company_data
+          schema: public
+  - name: client_portal_ads
+    using:
+      foreign_key_constraint_on:
+        column: company_type
+        table:
+          name: client_portal_ad
+          schema: public
+  - name: digital_valuation_informations
+    using:
+      foreign_key_constraint_on:
+        column: company_type
+        table:
+          name: digital_valuation_information
+          schema: public
+  - name: valuations_and_markets
+    using:
+      foreign_key_constraint_on:
+        column: type
+        table:
+          name: valuations_and_market
+          schema: public
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - name
+        - created_at
+        - updated_at
+        - branch
+        - id
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - name
+        - branch
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - id
+        - name
+        - branch
+        - created_at
+        - updated_at
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - id
+        - name
+        - branch
+        - created_at
+        - updated_at
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - id
+        - name
+        - branch
+        - created_at
+        - updated_at
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - id
+        - name
+        - branch
+        - created_at
+        - updated_at
+      filter: {}
+update_permissions:
+  - role: valuation_client
+    permission:
+      columns:
+        - name
+        - created_at
+        - updated_at
+        - branch
+        - id
+      filter: {}
+      check: null

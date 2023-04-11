@@ -1,0 +1,134 @@
+table:
+  name: consulting_companies
+  schema: public
+array_relationships:
+  - name: client_portal_profiles
+    using:
+      foreign_key_constraint_on:
+        column: consulting_companies
+        table:
+          name: client_portal_profiles
+          schema: public
+  - name: consultantRef
+    using:
+      manual_configuration:
+        column_mapping:
+          id: consulting_companies
+        insertion_order: null
+        remote_table:
+          name: consultants
+          schema: public
+  - name: digital_valuation_clients
+    using:
+      foreign_key_constraint_on:
+        column: consulting_company
+        table:
+          name: digital_valuation_clients
+          schema: public
+  - name: digital_valuation_informations
+    using:
+      foreign_key_constraint_on:
+        column: consulting_companies
+        table:
+          name: digital_valuation_information
+          schema: public
+  - name: digital_valuation_vouchers
+    using:
+      foreign_key_constraint_on:
+        column: consulting_company
+        table:
+          name: digital_valuation_voucher
+          schema: public
+  - name: valuation_model_configs
+    using:
+      foreign_key_constraint_on:
+        column: consulting_companies
+        table:
+          name: valuation_model_config
+          schema: public
+  - name: valuation_model_images
+    using:
+      foreign_key_constraint_on:
+        column: consulting_companies
+        table:
+          name: valuation_model_image
+          schema: public
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - name
+        - logo
+        - external_email
+        - available_valuations
+        - created_at
+        - updated_at
+        - disabled_at
+        - description
+        - sida
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - available_valuations
+        - description
+        - external_email
+        - logo
+        - name
+        - sida
+        - created_at
+        - disabled_at
+        - updated_at
+        - id
+      filter:
+        id:
+          _eq: x-hasura-company-id
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - available_valuations
+        - description
+        - external_email
+        - logo
+        - name
+        - sida
+        - created_at
+        - disabled_at
+        - updated_at
+        - id
+      filter:
+        id:
+          _eq: x-hasura-company-id
+  - role: external_consultant
+    permission:
+      columns:
+        - available_valuations
+        - description
+        - external_email
+        - logo
+        - name
+        - sida
+        - created_at
+        - disabled_at
+        - updated_at
+        - id
+      filter:
+        id:
+          _eq: x-hasura-company-id
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - available_valuations
+        - description
+        - external_email
+        - logo
+        - name
+        - sida
+        - created_at
+        - disabled_at
+        - updated_at
+        - id
+      filter:
+        id:
+          _eq: x-hasura-company-id

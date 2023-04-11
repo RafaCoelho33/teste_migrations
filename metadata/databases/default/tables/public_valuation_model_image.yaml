@@ -1,0 +1,7 @@
+table:
+  name: valuation_model_image
+  schema: public
+object_relationships:
+  - name: consulting_company
+    using:
+      foreign_key_constraint_on: consulting_companies

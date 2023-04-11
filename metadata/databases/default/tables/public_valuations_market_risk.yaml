@@ -1,0 +1,46 @@
+table:
+  name: valuations_market_risk
+  schema: public
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - name
+        - description
+        - value
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - name
+        - description
+        - value
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - name
+        - description
+        - value
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - name
+        - description
+        - value
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - name
+        - description
+        - value
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - name
+        - description
+        - value
+      filter: {}

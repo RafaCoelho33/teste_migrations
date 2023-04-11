@@ -1,0 +1,60 @@
+table:
+  name: open_companies_information
+  schema: public
+object_relationships:
+  - name: open_companies_sector
+    using:
+      foreign_key_constraint_on: sector
+  - name: open_companies_sub_sector
+    using:
+      foreign_key_constraint_on: subsector
+array_relationships:
+  - name: open_companies_12_months_results
+    using:
+      foreign_key_constraint_on:
+        column: company
+        table:
+          name: open_companies_12_months_results
+          schema: public
+  - name: open_companies_3_months_results
+    using:
+      foreign_key_constraint_on:
+        column: company
+        table:
+          name: open_companies_3_months_results
+          schema: public
+  - name: open_companies_balances
+    using:
+      foreign_key_constraint_on:
+        column: company
+        table:
+          name: open_companies_balance
+          schema: public
+  - name: open_companies_earnings
+    using:
+      foreign_key_constraint_on:
+        column: company
+        table:
+          name: open_companies_earnings
+          schema: public
+  - name: open_companies_growths
+    using:
+      foreign_key_constraint_on:
+        column: company
+        table:
+          name: open_companies_growth
+          schema: public
+  - name: open_companies_indicators
+    using:
+      foreign_key_constraint_on:
+        column: company
+        table:
+          name: open_companies_indicators
+          schema: public
+  - name: open_companies_values
+    using:
+      foreign_key_constraint_on:
+        column: company
+        table:
+          name: open_companies_values
+          schema: public

@@ -1,0 +1,353 @@
+table:
+  name: valuations_information
+  schema: public
+object_relationships:
+  - name: consultantAndValuationRef
+    using:
+      manual_configuration:
+        column_mapping:
+          valuation: valuation
+        insertion_order: null
+        remote_table:
+          name: consultants_and_valuations
+          schema: public
+  - name: valuationRef
+    using:
+      foreign_key_constraint_on: valuation
+  - name: valuations_information_reason
+    using:
+      foreign_key_constraint_on: reason
+insert_permissions:
+  - role: buyco_consultant
+    permission:
+      check:
+        consultantAndValuationRef:
+          consultant:
+            _eq: x-hasura-consultant-id
+      columns:
+        - area
+        - created_at
+        - creation_value
+        - ecommerce
+        - employees
+        - id
+        - important_notes
+        - market_time
+        - reason
+        - trademark
+        - updated_at
+        - valuation
+  - role: buyco_consultant_admin
+    permission:
+      check:
+        consultantAndValuationRef:
+          valuationsRef:
+            consulting_companies:
+              _eq: x-hasura-company-id
+      columns:
+        - area
+        - created_at
+        - creation_value
+        - ecommerce
+        - employees
+        - id
+        - important_notes
+        - market_time
+        - reason
+        - trademark
+        - updated_at
+        - valuation
+  - role: external_consultant
+    permission:
+      check:
+        consultantAndValuationRef:
+          consultant:
+            _eq: x-hasura-consultant-id
+      columns:
+        - area
+        - created_at
+        - creation_value
+        - ecommerce
+        - employees
+        - id
+        - important_notes
+        - market_time
+        - reason
+        - trademark
+        - updated_at
+        - valuation
+  - role: external_consultant_admin
+    permission:
+      check:
+        consultantAndValuationRef:
+          valuationsRef:
+            consulting_companies:
+              _eq: x-hasura-company-id
+      columns:
+        - area
+        - created_at
+        - creation_value
+        - ecommerce
+        - employees
+        - id
+        - important_notes
+        - market_time
+        - reason
+        - trademark
+        - updated_at
+        - valuation
+  - role: valuation_client
+    permission:
+      check:
+        valuation:
+          _eq: x-hasura-valuation-id
+      columns:
+        - id
+        - valuation
+        - reason
+        - important_notes
+        - created_at
+        - updated_at
+        - employees
+        - area
+        - market_time
+        - ecommerce
+        - creation_value
+        - trademark
+select_permissions:
+  - role: buyco_consultant
+    permission:
+      columns:
+        - area
+        - created_at
+        - creation_value
+        - ecommerce
+        - employees
+        - id
+        - important_notes
+        - market_time
+        - reason
+        - trademark
+        - updated_at
+        - valuation
+      filter:
+        consultantAndValuationRef:
+          consultant:
+            _eq: x-hasura-consultant-id
+      allow_aggregations: true
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - area
+        - created_at
+        - creation_value
+        - ecommerce
+        - employees
+        - id
+        - important_notes
+        - market_time
+        - reason
+        - trademark
+        - updated_at
+        - valuation
+      filter:
+        consultantAndValuationRef:
+          valuationsRef:
+            consulting_companies:
+              _eq: x-hasura-company-id
+      allow_aggregations: true
+  - role: external_consultant
+    permission:
+      columns:
+        - area
+        - created_at
+        - creation_value
+        - ecommerce
+        - employees
+        - id
+        - important_notes
+        - market_time
+        - reason
+        - trademark
+        - updated_at
+        - valuation
+      filter:
+        consultantAndValuationRef:
+          consultant:
+            _eq: x-hasura-consultant-id
+      allow_aggregations: true
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - area
+        - created_at
+        - creation_value
+        - ecommerce
+        - employees
+        - id
+        - important_notes
+        - market_time
+        - reason
+        - trademark
+        - updated_at
+        - valuation
+      filter:
+        consultantAndValuationRef:
+          valuationsRef:
+            consulting_companies:
+              _eq: x-hasura-company-id
+      allow_aggregations: true
+  - role: valuation_client
+    permission:
+      columns:
+        - id
+        - valuation
+        - reason
+        - important_notes
+        - created_at
+        - updated_at
+        - employees
+        - area
+        - market_time
+        - ecommerce
+        - creation_value
+        - trademark
+      filter:
+        valuation:
+          _eq: x-hasura-valuation-id
+update_permissions:
+  - role: buyco_consultant
+    permission:
+      columns:
+        - area
+        - created_at
+        - creation_value
+        - ecommerce
+        - employees
+        - id
+        - important_notes
+        - market_time
+        - reason
+        - trademark
+        - updated_at
+        - valuation
+      filter:
+        consultantAndValuationRef:
+          consultant:
+            _eq: x-hasura-consultant-id
+      check: null
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - area
+        - created_at
+        - creation_value
+        - ecommerce
+        - employees
+        - id
+        - important_notes
+        - market_time
+        - reason
+        - trademark
+        - updated_at
+        - valuation
+      filter:
+        consultantAndValuationRef:
+          valuationsRef:
+            consulting_companies:
+              _eq: x-hasura-company-id
+      check: null
+  - role: external_consultant
+    permission:
+      columns:
+        - area
+        - created_at
+        - creation_value
+        - ecommerce
+        - employees
+        - id
+        - important_notes
+        - market_time
+        - reason
+        - trademark
+        - updated_at
+        - valuation
+      filter:
+        consultantAndValuationRef:
+          consultant:
+            _eq: x-hasura-consultant-id
+      check: null
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - area
+        - created_at
+        - creation_value
+        - ecommerce
+        - employees
+        - id
+        - important_notes
+        - market_time
+        - reason
+        - trademark
+        - updated_at
+        - valuation
+      filter:
+        consultantAndValuationRef:
+          valuationsRef:
+            consulting_companies:
+              _eq: x-hasura-company-id
+      check: null
+  - role: valuation_client
+    permission:
+      columns:
+        - id
+        - valuation
+        - reason
+        - important_notes
+        - created_at
+        - updated_at
+        - employees
+        - area
+        - market_time
+        - ecommerce
+        - creation_value
+        - trademark
+      filter:
+        valuation:
+          _eq: x-hasura-valuation-id
+      check:
+        valuation:
+          _eq: x-hasura-valuation-id
+delete_permissions:
+  - role: buyco_consultant
+    permission:
+      filter:
+        consultantAndValuationRef:
+          consultant:
+            _eq: x-hasura-consultant-id
+  - role: buyco_consultant_admin
+    permission:
+      filter:
+        consultantAndValuationRef:
+          valuationsRef:
+            consulting_companies:
+              _eq: x-hasura-company-id
+  - role: external_consultant
+    permission:
+      filter:
+        consultantAndValuationRef:
+          consultant:
+            _eq: x-hasura-consultant-id
+  - role: external_consultant_admin
+    permission:
+      filter:
+        consultantAndValuationRef:
+          valuationsRef:
+            consulting_companies:
+              _eq: x-hasura-company-id
+  - role: valuation_client
+    permission:
+      filter:
+        valuation:
+          _eq: x-hasura-valuation-id

@@ -1,0 +1,43 @@
+table:
+  name: valuations_cnd_type
+  schema: public
+is_enum: true
+array_relationships:
+  - name: valuations_cnds
+    using:
+      foreign_key_constraint_on:
+        column: type
+        table:
+          name: valuations_cnd
+          schema: public
+select_permissions:
+  - role: buyco_consultant
+    permission:
+      columns:
+        - value
+        - name
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - value
+        - name
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - value
+        - name
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - value
+        - name
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - value
+        - name
+      filter: {}

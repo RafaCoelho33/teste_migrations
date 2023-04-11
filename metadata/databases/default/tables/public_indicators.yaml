@@ -1,0 +1,124 @@
+table:
+  name: indicators
+  schema: public
+object_relationships:
+  - name: indicatorsType
+    using:
+      foreign_key_constraint_on: type
+insert_permissions:
+  - role: buyco
+    permission:
+      check: {}
+      columns:
+        - id
+        - year
+        - type
+        - value
+        - created_at
+        - updated_at
+  - role: buyco_consultant_admin
+    permission:
+      check: {}
+      columns:
+        - id
+        - year
+        - type
+        - value
+        - created_at
+        - updated_at
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - year
+        - type
+        - value
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco
+    permission:
+      columns:
+        - id
+        - year
+        - type
+        - value
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - year
+        - type
+        - value
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - id
+        - year
+        - type
+        - value
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: external_consultant
+    permission:
+      columns:
+        - id
+        - year
+        - type
+        - value
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - id
+        - year
+        - type
+        - value
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+update_permissions:
+  - role: buyco
+    permission:
+      columns:
+        - value
+        - year
+        - type
+        - created_at
+        - updated_at
+        - id
+      filter: {}
+      check: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - id
+        - year
+        - type
+        - value
+        - created_at
+        - updated_at
+      filter: {}
+      check: {}
+delete_permissions:
+  - role: buyco
+    permission:
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      filter: {}

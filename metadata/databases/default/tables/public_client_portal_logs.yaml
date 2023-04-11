@@ -1,0 +1,7 @@
+table:
+  name: client_portal_logs
+  schema: public
+object_relationships:
+  - name: client_portal_ad
+    using:
+      foreign_key_constraint_on: ad_id

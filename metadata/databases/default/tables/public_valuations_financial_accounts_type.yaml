@@ -1,0 +1,53 @@
+table:
+  name: valuations_financial_accounts_type
+  schema: public
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - value
+        - name
+        - descrition
+      filter: {}
+  - role: buyco
+    permission:
+      columns:
+        - descrition
+        - name
+        - value
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - descrition
+        - name
+        - value
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - descrition
+        - name
+        - value
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - value
+        - name
+        - descrition
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - descrition
+        - name
+        - value
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - value
+        - name
+        - descrition
+      filter: {}

@@ -1,0 +1,118 @@
+table:
+  name: valuations_cnpj_membership
+  schema: public
+object_relationships:
+  - name: valuationByValuation
+    using:
+      foreign_key_constraint_on: valuation
+  - name: valuation_cnpj_membership_role
+    using:
+      foreign_key_constraint_on: role
+select_permissions:
+  - role: buyco_consultant
+    permission:
+      columns:
+        - created_at
+        - id
+        - name
+        - role
+        - tax_id
+        - updated_at
+        - valuation
+      filter:
+        valuationByValuation:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+      allow_aggregations: true
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - created_at
+        - id
+        - name
+        - role
+        - tax_id
+        - updated_at
+        - valuation
+      filter:
+        valuationByValuation:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      allow_aggregations: true
+  - role: external_consultant
+    permission:
+      columns:
+        - created_at
+        - id
+        - name
+        - role
+        - tax_id
+        - updated_at
+        - valuation
+      filter:
+        valuationByValuation:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+      allow_aggregations: true
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - created_at
+        - id
+        - name
+        - role
+        - tax_id
+        - updated_at
+        - valuation
+      filter:
+        valuationByValuation:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      allow_aggregations: true
+  - role: valuation_client
+    permission:
+      columns:
+        - valuation
+        - name
+        - tax_id
+        - role
+        - created_at
+        - updated_at
+        - id
+      filter:
+        valuation:
+          _eq: x-hasura-valuation-id
+delete_permissions:
+  - role: buyco_consultant
+    permission:
+      filter:
+        valuationByValuation:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+  - role: buyco_consultant_admin
+    permission:
+      filter:
+        valuationByValuation:
+          consulting_companies:
+            _eq: x-hasura-company-id
+  - role: external_consultant
+    permission:
+      filter:
+        valuationByValuation:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+  - role: external_consultant_admin
+    permission:
+      filter:
+        valuationByValuation:
+          consulting_companies:
+            _eq: x-hasura-company-id
+  - role: valuation_client
+    permission:
+      filter:
+        valuation:
+          _eq: x-hasura-valuation-id

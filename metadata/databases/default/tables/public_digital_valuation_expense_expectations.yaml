@@ -1,0 +1,34 @@
+table:
+  name: digital_valuation_expense_expectations
+  schema: public
+array_relationships:
+  - name: digital_valuation_descriptions
+    using:
+      foreign_key_constraint_on:
+        column: expense_expectation
+        table:
+          name: digital_valuation_descriptions
+          schema: public
+insert_permissions:
+  - role: anonymous
+    permission:
+      check: {}
+      columns:
+        - percentage
+        - description
+        - id
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - percentage
+        - description
+        - id
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - id
+        - description
+        - percentage
+      filter: {}

@@ -1,0 +1,397 @@
+table:
+  name: valuations_and_market
+  schema: public
+object_relationships:
+  - name: company_type
+    using:
+      foreign_key_constraint_on: type
+  - name: consultantAndValuationRef
+    using:
+      manual_configuration:
+        column_mapping:
+          valuation: valuation
+        insertion_order: null
+        remote_table:
+          name: consultants_and_valuations
+          schema: public
+  - name: damodaranBetaRef
+    using:
+      manual_configuration:
+        column_mapping:
+          damodaran_region: region
+          damodaran_sector: industry
+        insertion_order: null
+        remote_table:
+          name: damodaran_total_betas
+          schema: public
+  - name: damodaranMarginRef
+    using:
+      manual_configuration:
+        column_mapping:
+          damodaran_region: region
+          damodaran_sector: industry
+        insertion_order: null
+        remote_table:
+          name: damodaran_margins
+          schema: public
+  - name: damodaranMultipleEbitdaRef
+    using:
+      manual_configuration:
+        column_mapping:
+          damodaran_region: region
+          damodaran_sector: industry
+        insertion_order: null
+        remote_table:
+          name: damodaran_multiple_ebitda
+          schema: public
+  - name: damodaranMultipleSaleRef
+    using:
+      manual_configuration:
+        column_mapping:
+          damodaran_region: region
+          damodaran_sector: industry
+        insertion_order: null
+        remote_table:
+          name: damodaran_multiple_sale
+          schema: public
+  - name: damodaranRegionByDamodaranRegion
+    using:
+      foreign_key_constraint_on: damodaran_region
+  - name: damodaranSimpleBetaRef
+    using:
+      manual_configuration:
+        column_mapping:
+          damodaran_region: region
+          damodaran_sector: industry
+        insertion_order: null
+        remote_table:
+          name: damodaran_betas
+          schema: public
+  - name: damodaran_industry
+    using:
+      foreign_key_constraint_on: damodaran_sector
+  - name: mainMarketRef
+    using:
+      foreign_key_constraint_on: main_market
+  - name: sectorRef
+    using:
+      foreign_key_constraint_on: sector
+  - name: specificMarketRef
+    using:
+      foreign_key_constraint_on: specific_market
+  - name: valuationRef
+    using:
+      foreign_key_constraint_on: valuation
+insert_permissions:
+  - role: buyco_consultant
+    permission:
+      check:
+        consultantAndValuationRef:
+          consultant:
+            _eq: x-hasura-consultant-id
+      columns:
+        - id
+        - valuation
+        - main_market
+        - specific_market
+        - sector
+        - created_at
+        - updated_at
+        - type
+        - other_type
+        - damodaran_sector
+        - damodaran_region
+  - role: buyco_consultant_admin
+    permission:
+      check:
+        consultantAndValuationRef:
+          valuationsRef:
+            consulting_companies:
+              _eq: x-hasura-company-id
+      columns:
+        - other_type
+        - sector
+        - created_at
+        - updated_at
+        - damodaran_region
+        - damodaran_sector
+        - id
+        - main_market
+        - specific_market
+        - type
+        - valuation
+  - role: external_consultant
+    permission:
+      check:
+        consultantAndValuationRef:
+          consultant:
+            _eq: x-hasura-consultant-id
+      columns:
+        - id
+        - valuation
+        - main_market
+        - specific_market
+        - sector
+        - created_at
+        - updated_at
+        - type
+        - other_type
+        - damodaran_sector
+        - damodaran_region
+  - role: external_consultant_admin
+    permission:
+      check:
+        consultantAndValuationRef:
+          valuationsRef:
+            consulting_companies:
+              _eq: x-hasura-company-id
+      columns:
+        - other_type
+        - sector
+        - created_at
+        - updated_at
+        - damodaran_region
+        - damodaran_sector
+        - id
+        - main_market
+        - specific_market
+        - type
+        - valuation
+  - role: valuation_client
+    permission:
+      check:
+        valuation:
+          _eq: x-hasura-valuation-id
+      columns:
+        - other_type
+        - sector
+        - created_at
+        - updated_at
+        - damodaran_region
+        - damodaran_sector
+        - id
+        - main_market
+        - specific_market
+        - type
+        - valuation
+select_permissions:
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - valuation
+        - main_market
+        - specific_market
+        - sector
+        - created_at
+        - updated_at
+        - type
+        - other_type
+        - damodaran_sector
+        - damodaran_region
+      filter:
+        consultantAndValuationRef:
+          consultant:
+            _eq: x-hasura-consultant-id
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - other_type
+        - sector
+        - created_at
+        - updated_at
+        - damodaran_region
+        - damodaran_sector
+        - id
+        - main_market
+        - specific_market
+        - type
+        - valuation
+      filter:
+        consultantAndValuationRef:
+          valuationsRef:
+            consulting_companies:
+              _eq: x-hasura-company-id
+  - role: external_consultant
+    permission:
+      columns:
+        - id
+        - valuation
+        - main_market
+        - specific_market
+        - sector
+        - created_at
+        - updated_at
+        - type
+        - other_type
+        - damodaran_sector
+        - damodaran_region
+      filter:
+        consultantAndValuationRef:
+          consultant:
+            _eq: x-hasura-consultant-id
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - other_type
+        - sector
+        - created_at
+        - updated_at
+        - damodaran_region
+        - damodaran_sector
+        - id
+        - main_market
+        - specific_market
+        - type
+        - valuation
+      filter:
+        consultantAndValuationRef:
+          valuationsRef:
+            consulting_companies:
+              _eq: x-hasura-company-id
+  - role: valuation_client
+    permission:
+      columns:
+        - other_type
+        - sector
+        - created_at
+        - updated_at
+        - damodaran_region
+        - damodaran_sector
+        - id
+        - main_market
+        - specific_market
+        - type
+        - valuation
+      filter:
+        valuation:
+          _eq: x-hasura-valuation-id
+update_permissions:
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - valuation
+        - main_market
+        - specific_market
+        - sector
+        - created_at
+        - updated_at
+        - type
+        - other_type
+        - damodaran_sector
+        - damodaran_region
+      filter:
+        consultantAndValuationRef:
+          consultant:
+            _eq: x-hasura-consultant-id
+      check: null
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - other_type
+        - sector
+        - created_at
+        - updated_at
+        - damodaran_region
+        - damodaran_sector
+        - id
+        - main_market
+        - specific_market
+        - type
+        - valuation
+      filter:
+        consultantAndValuationRef:
+          valuationsRef:
+            consulting_companies:
+              _eq: x-hasura-company-id
+      check: null
+  - role: external_consultant
+    permission:
+      columns:
+        - id
+        - valuation
+        - main_market
+        - specific_market
+        - sector
+        - created_at
+        - updated_at
+        - type
+        - other_type
+        - damodaran_sector
+        - damodaran_region
+      filter:
+        consultantAndValuationRef:
+          consultant:
+            _eq: x-hasura-consultant-id
+      check: null
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - other_type
+        - sector
+        - created_at
+        - updated_at
+        - damodaran_region
+        - damodaran_sector
+        - id
+        - main_market
+        - specific_market
+        - type
+        - valuation
+      filter:
+        consultantAndValuationRef:
+          valuationsRef:
+            consulting_companies:
+              _eq: x-hasura-company-id
+      check: null
+  - role: valuation_client
+    permission:
+      columns:
+        - other_type
+        - sector
+        - created_at
+        - updated_at
+        - damodaran_region
+        - damodaran_sector
+        - id
+        - main_market
+        - specific_market
+        - type
+        - valuation
+      filter:
+        valuation:
+          _eq: x-hasura-valuation-id
+      check: null
+delete_permissions:
+  - role: buyco_consultant
+    permission:
+      filter:
+        consultantAndValuationRef:
+          consultant:
+            _eq: x-hasura-consultant-id
+  - role: buyco_consultant_admin
+    permission:
+      filter:
+        consultantAndValuationRef:
+          valuationsRef:
+            consulting_companies:
+              _eq: x-hasura-company-id
+  - role: external_consultant
+    permission:
+      filter:
+        consultantAndValuationRef:
+          consultant:
+            _eq: x-hasura-consultant-id
+  - role: external_consultant_admin
+    permission:
+      filter:
+        consultantAndValuationRef:
+          valuationsRef:
+            consulting_companies:
+              _eq: x-hasura-company-id
+  - role: valuation_client
+    permission:
+      filter:
+        valuation:
+          _eq: x-hasura-valuation-id

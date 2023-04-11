@@ -1,0 +1,647 @@
+table:
+  name: ma_advertisements
+  schema: public
+object_relationships:
+  - name: valuationByValuation
+    using:
+      foreign_key_constraint_on: valuation
+insert_permissions:
+  - role: buyco_consultant
+    permission:
+      check:
+        valuationByValuation:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+      columns:
+        - registered_brand
+        - average_revenue
+        - invest_current_liquidity
+        - invest_monthly_roi
+        - invest_profit_margin
+        - indicated_sale_price
+        - invest_equilibrium_point
+        - invest_m2
+        - invest_workers
+        - negotiation_company_value
+        - negotiation_investment
+        - negotiation_net_sale
+        - negotiation_passives
+        - negotiation_receivables
+        - negotiation_working_capital
+        - differentials
+        - highlights
+        - address
+        - balance
+        - company_type
+        - consultant
+        - digital_facebook
+        - digital_instagram
+        - digital_site
+        - dre
+        - map
+        - market_description
+        - market_name
+        - picture1
+        - picture2
+        - picture3
+        - picture4
+        - sale_type
+        - text_conclusion
+        - text_first
+        - text_second
+        - text_structure
+        - text_third
+        - title
+        - created_at
+        - updated_at
+        - id
+        - valuation
+  - role: buyco_consultant_admin
+    permission:
+      check:
+        valuationByValuation:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      columns:
+        - registered_brand
+        - average_revenue
+        - invest_current_liquidity
+        - invest_monthly_roi
+        - invest_profit_margin
+        - indicated_sale_price
+        - invest_equilibrium_point
+        - invest_m2
+        - invest_workers
+        - negotiation_company_value
+        - negotiation_investment
+        - negotiation_net_sale
+        - negotiation_passives
+        - negotiation_receivables
+        - negotiation_working_capital
+        - differentials
+        - highlights
+        - address
+        - balance
+        - company_type
+        - consultant
+        - digital_facebook
+        - digital_instagram
+        - digital_site
+        - dre
+        - map
+        - market_description
+        - market_name
+        - picture1
+        - picture2
+        - picture3
+        - picture4
+        - sale_type
+        - text_conclusion
+        - text_first
+        - text_second
+        - text_structure
+        - text_third
+        - title
+        - created_at
+        - updated_at
+        - id
+        - valuation
+  - role: external_consultant
+    permission:
+      check:
+        valuationByValuation:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+      columns:
+        - registered_brand
+        - average_revenue
+        - invest_current_liquidity
+        - invest_monthly_roi
+        - invest_profit_margin
+        - indicated_sale_price
+        - invest_equilibrium_point
+        - invest_m2
+        - invest_workers
+        - negotiation_company_value
+        - negotiation_investment
+        - negotiation_net_sale
+        - negotiation_passives
+        - negotiation_receivables
+        - negotiation_working_capital
+        - differentials
+        - highlights
+        - address
+        - balance
+        - company_type
+        - consultant
+        - digital_facebook
+        - digital_instagram
+        - digital_site
+        - dre
+        - map
+        - market_description
+        - market_name
+        - picture1
+        - picture2
+        - picture3
+        - picture4
+        - sale_type
+        - text_conclusion
+        - text_first
+        - text_second
+        - text_structure
+        - text_third
+        - title
+        - created_at
+        - updated_at
+        - id
+        - valuation
+  - role: external_consultant_admin
+    permission:
+      check:
+        valuationByValuation:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      columns:
+        - registered_brand
+        - average_revenue
+        - invest_current_liquidity
+        - invest_monthly_roi
+        - invest_profit_margin
+        - indicated_sale_price
+        - invest_equilibrium_point
+        - invest_m2
+        - invest_workers
+        - negotiation_company_value
+        - negotiation_investment
+        - negotiation_net_sale
+        - negotiation_passives
+        - negotiation_receivables
+        - negotiation_working_capital
+        - differentials
+        - highlights
+        - address
+        - balance
+        - company_type
+        - consultant
+        - digital_facebook
+        - digital_instagram
+        - digital_site
+        - dre
+        - map
+        - market_description
+        - market_name
+        - picture1
+        - picture2
+        - picture3
+        - picture4
+        - sale_type
+        - text_conclusion
+        - text_first
+        - text_second
+        - text_structure
+        - text_third
+        - title
+        - created_at
+        - updated_at
+        - id
+        - valuation
+select_permissions:
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - valuation
+        - title
+        - sale_type
+        - company_type
+        - address
+        - registered_brand
+        - text_conclusion
+        - text_first
+        - text_second
+        - text_third
+        - text_structure
+        - dre
+        - balance
+        - picture1
+        - picture2
+        - picture3
+        - picture4
+        - map
+        - market_name
+        - market_description
+        - consultant
+        - highlights
+        - differentials
+        - invest_m2
+        - invest_workers
+        - invest_profit_margin
+        - invest_current_liquidity
+        - invest_monthly_roi
+        - invest_equilibrium_point
+        - indicated_sale_price
+        - negotiation_company_value
+        - negotiation_receivables
+        - negotiation_passives
+        - negotiation_net_sale
+        - negotiation_working_capital
+        - negotiation_investment
+        - digital_site
+        - digital_facebook
+        - digital_instagram
+        - average_revenue
+        - created_at
+        - updated_at
+      filter:
+        valuationByValuation:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - registered_brand
+        - average_revenue
+        - invest_current_liquidity
+        - invest_monthly_roi
+        - invest_profit_margin
+        - indicated_sale_price
+        - invest_equilibrium_point
+        - invest_m2
+        - invest_workers
+        - negotiation_company_value
+        - negotiation_investment
+        - negotiation_net_sale
+        - negotiation_passives
+        - negotiation_receivables
+        - negotiation_working_capital
+        - differentials
+        - highlights
+        - address
+        - balance
+        - company_type
+        - consultant
+        - digital_facebook
+        - digital_instagram
+        - digital_site
+        - dre
+        - map
+        - market_description
+        - market_name
+        - picture1
+        - picture2
+        - picture3
+        - picture4
+        - sale_type
+        - text_conclusion
+        - text_first
+        - text_second
+        - text_structure
+        - text_third
+        - title
+        - created_at
+        - updated_at
+        - id
+        - valuation
+      filter:
+        valuationByValuation:
+          consulting_companies:
+            _eq: x-hasura-company-id
+  - role: external_consultant
+    permission:
+      columns:
+        - registered_brand
+        - average_revenue
+        - invest_current_liquidity
+        - invest_monthly_roi
+        - invest_profit_margin
+        - indicated_sale_price
+        - invest_equilibrium_point
+        - invest_m2
+        - invest_workers
+        - negotiation_company_value
+        - negotiation_investment
+        - negotiation_net_sale
+        - negotiation_passives
+        - negotiation_receivables
+        - negotiation_working_capital
+        - differentials
+        - highlights
+        - address
+        - balance
+        - company_type
+        - consultant
+        - digital_facebook
+        - digital_instagram
+        - digital_site
+        - dre
+        - map
+        - market_description
+        - market_name
+        - picture1
+        - picture2
+        - picture3
+        - picture4
+        - sale_type
+        - text_conclusion
+        - text_first
+        - text_second
+        - text_structure
+        - text_third
+        - title
+        - created_at
+        - updated_at
+        - id
+        - valuation
+      filter:
+        valuationByValuation:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - registered_brand
+        - average_revenue
+        - invest_current_liquidity
+        - invest_monthly_roi
+        - invest_profit_margin
+        - indicated_sale_price
+        - invest_equilibrium_point
+        - invest_m2
+        - invest_workers
+        - negotiation_company_value
+        - negotiation_investment
+        - negotiation_net_sale
+        - negotiation_passives
+        - negotiation_receivables
+        - negotiation_working_capital
+        - differentials
+        - highlights
+        - address
+        - balance
+        - company_type
+        - consultant
+        - digital_facebook
+        - digital_instagram
+        - digital_site
+        - dre
+        - map
+        - market_description
+        - market_name
+        - picture1
+        - picture2
+        - picture3
+        - picture4
+        - sale_type
+        - text_conclusion
+        - text_first
+        - text_second
+        - text_structure
+        - text_third
+        - title
+        - created_at
+        - updated_at
+        - id
+        - valuation
+      filter:
+        valuationByValuation:
+          consulting_companies:
+            _eq: x-hasura-company-id
+update_permissions:
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - valuation
+        - title
+        - sale_type
+        - company_type
+        - address
+        - registered_brand
+        - text_conclusion
+        - text_first
+        - text_second
+        - text_third
+        - text_structure
+        - dre
+        - balance
+        - picture1
+        - picture2
+        - picture3
+        - picture4
+        - map
+        - market_name
+        - market_description
+        - consultant
+        - highlights
+        - differentials
+        - invest_m2
+        - invest_workers
+        - invest_profit_margin
+        - invest_current_liquidity
+        - invest_monthly_roi
+        - invest_equilibrium_point
+        - indicated_sale_price
+        - negotiation_company_value
+        - negotiation_receivables
+        - negotiation_passives
+        - negotiation_net_sale
+        - negotiation_working_capital
+        - negotiation_investment
+        - digital_site
+        - digital_facebook
+        - digital_instagram
+        - average_revenue
+        - created_at
+        - updated_at
+      filter:
+        valuationByValuation:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+      check: null
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - registered_brand
+        - average_revenue
+        - invest_current_liquidity
+        - invest_monthly_roi
+        - invest_profit_margin
+        - indicated_sale_price
+        - invest_equilibrium_point
+        - invest_m2
+        - invest_workers
+        - negotiation_company_value
+        - negotiation_investment
+        - negotiation_net_sale
+        - negotiation_passives
+        - negotiation_receivables
+        - negotiation_working_capital
+        - differentials
+        - highlights
+        - address
+        - balance
+        - company_type
+        - consultant
+        - digital_facebook
+        - digital_instagram
+        - digital_site
+        - dre
+        - map
+        - market_description
+        - market_name
+        - picture1
+        - picture2
+        - picture3
+        - picture4
+        - sale_type
+        - text_conclusion
+        - text_first
+        - text_second
+        - text_structure
+        - text_third
+        - title
+        - created_at
+        - updated_at
+        - id
+        - valuation
+      filter:
+        valuationByValuation:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      check: null
+  - role: external_consultant
+    permission:
+      columns:
+        - registered_brand
+        - average_revenue
+        - invest_current_liquidity
+        - invest_monthly_roi
+        - invest_profit_margin
+        - indicated_sale_price
+        - invest_equilibrium_point
+        - invest_m2
+        - invest_workers
+        - negotiation_company_value
+        - negotiation_investment
+        - negotiation_net_sale
+        - negotiation_passives
+        - negotiation_receivables
+        - negotiation_working_capital
+        - differentials
+        - highlights
+        - address
+        - balance
+        - company_type
+        - consultant
+        - digital_facebook
+        - digital_instagram
+        - digital_site
+        - dre
+        - map
+        - market_description
+        - market_name
+        - picture1
+        - picture2
+        - picture3
+        - picture4
+        - sale_type
+        - text_conclusion
+        - text_first
+        - text_second
+        - text_structure
+        - text_third
+        - title
+        - created_at
+        - updated_at
+        - id
+        - valuation
+      filter:
+        valuationByValuation:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+      check: null
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - registered_brand
+        - average_revenue
+        - invest_current_liquidity
+        - invest_monthly_roi
+        - invest_profit_margin
+        - indicated_sale_price
+        - invest_equilibrium_point
+        - invest_m2
+        - invest_workers
+        - negotiation_company_value
+        - negotiation_investment
+        - negotiation_net_sale
+        - negotiation_passives
+        - negotiation_receivables
+        - negotiation_working_capital
+        - differentials
+        - highlights
+        - address
+        - balance
+        - company_type
+        - consultant
+        - digital_facebook
+        - digital_instagram
+        - digital_site
+        - dre
+        - map
+        - market_description
+        - market_name
+        - picture1
+        - picture2
+        - picture3
+        - picture4
+        - sale_type
+        - text_conclusion
+        - text_first
+        - text_second
+        - text_structure
+        - text_third
+        - title
+        - created_at
+        - updated_at
+        - id
+        - valuation
+      filter:
+        valuationByValuation:
+          consulting_companies:
+            _eq: x-hasura-company-id
+      check: null
+delete_permissions:
+  - role: buyco_consultant
+    permission:
+      filter:
+        valuationByValuation:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+  - role: buyco_consultant_admin
+    permission:
+      filter:
+        valuationByValuation:
+          consulting_companies:
+            _eq: x-hasura-company-id
+  - role: external_consultant
+    permission:
+      filter:
+        valuationByValuation:
+          consultantAndValuationRef:
+            consultant:
+              _eq: x-hasura-consultant-id
+  - role: external_consultant_admin
+    permission:
+      filter:
+        valuationByValuation:
+          consulting_companies:
+            _eq: x-hasura-company-id

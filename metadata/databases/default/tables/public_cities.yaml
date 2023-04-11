@@ -1,0 +1,77 @@
+table:
+  name: cities
+  schema: public
+object_relationships:
+  - name: stateByState
+    using:
+      foreign_key_constraint_on: state
+array_relationships:
+  - name: calculator_leads
+    using:
+      foreign_key_constraint_on:
+        column: city
+        table:
+          name: calculator_lead
+          schema: public
+  - name: client_portal_ads
+    using:
+      foreign_key_constraint_on:
+        column: city
+        table:
+          name: client_portal_ad
+          schema: public
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - name
+        - state
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - name
+        - state
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - id
+        - name
+        - state
+        - created_at
+        - updated_at
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - id
+        - name
+        - state
+        - created_at
+        - updated_at
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - id
+        - name
+        - state
+        - created_at
+        - updated_at
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - id
+        - name
+        - state
+        - created_at
+        - updated_at
+      filter: {}

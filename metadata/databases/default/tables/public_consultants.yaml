@@ -1,0 +1,233 @@
+table:
+  name: consultants
+  schema: public
+object_relationships:
+  - name: consultingCompaniesRef
+    using:
+      manual_configuration:
+        column_mapping:
+          consulting_companies: id
+        insertion_order: null
+        remote_table:
+          name: consulting_companies
+          schema: public
+  - name: userRef
+    using:
+      manual_configuration:
+        column_mapping:
+          email: email
+        insertion_order: null
+        remote_table:
+          name: users
+          schema: public
+select_permissions:
+  - role: buyco
+    permission:
+      columns:
+        - administrator
+        - available_valuations
+        - email
+        - name
+        - picture
+        - created_at
+        - disabled_at
+        - updated_at
+        - consulting_companies
+        - id
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - name
+        - email
+        - administrator
+        - picture
+        - consulting_companies
+        - created_at
+        - updated_at
+        - disabled_at
+        - available_valuations
+        - sign
+        - occupation
+        - document
+        - resume1
+        - resume2
+        - resume3
+      filter:
+        consulting_companies:
+          _eq: x-hasura-company-id
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - administrator
+        - available_valuations
+        - document
+        - email
+        - name
+        - occupation
+        - picture
+        - resume1
+        - resume2
+        - resume3
+        - sign
+        - created_at
+        - disabled_at
+        - updated_at
+        - consulting_companies
+        - id
+      filter:
+        consulting_companies:
+          _eq: x-hasura-company-id
+  - role: external_consultant
+    permission:
+      columns:
+        - id
+        - name
+        - email
+        - administrator
+        - picture
+        - consulting_companies
+        - created_at
+        - updated_at
+        - disabled_at
+        - available_valuations
+        - sign
+        - occupation
+        - document
+        - resume1
+        - resume2
+        - resume3
+      filter:
+        consulting_companies:
+          _eq: x-hasura-company-id
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - administrator
+        - available_valuations
+        - document
+        - email
+        - name
+        - occupation
+        - picture
+        - resume1
+        - resume2
+        - resume3
+        - sign
+        - created_at
+        - disabled_at
+        - updated_at
+        - consulting_companies
+        - id
+      filter:
+        consulting_companies:
+          _eq: x-hasura-company-id
+update_permissions:
+  - role: buyco
+    permission:
+      columns:
+        - id
+        - name
+        - email
+        - administrator
+        - picture
+        - consulting_companies
+        - created_at
+        - updated_at
+        - disabled_at
+        - available_valuations
+      filter: {}
+      check: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - name
+        - email
+        - administrator
+        - picture
+        - consulting_companies
+        - created_at
+        - updated_at
+        - disabled_at
+        - available_valuations
+        - sign
+        - occupation
+        - document
+        - resume1
+        - resume2
+        - resume3
+      filter:
+        consulting_companies:
+          _eq: x-hasura-company-id
+      check: null
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - administrator
+        - available_valuations
+        - document
+        - email
+        - name
+        - occupation
+        - picture
+        - resume1
+        - resume2
+        - resume3
+        - sign
+        - created_at
+        - disabled_at
+        - updated_at
+        - consulting_companies
+        - id
+      filter:
+        consulting_companies:
+          _eq: x-hasura-company-id
+      check: null
+  - role: external_consultant
+    permission:
+      columns:
+        - id
+        - name
+        - email
+        - administrator
+        - picture
+        - consulting_companies
+        - created_at
+        - updated_at
+        - disabled_at
+        - available_valuations
+        - sign
+        - occupation
+        - document
+        - resume1
+        - resume2
+        - resume3
+      filter:
+        consulting_companies:
+          _eq: x-hasura-company-id
+      check: null
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - administrator
+        - available_valuations
+        - document
+        - email
+        - name
+        - occupation
+        - picture
+        - resume1
+        - resume2
+        - resume3
+        - sign
+        - created_at
+        - disabled_at
+        - updated_at
+        - consulting_companies
+        - id
+      filter:
+        consulting_companies:
+          _eq: x-hasura-company-id
+      check: null

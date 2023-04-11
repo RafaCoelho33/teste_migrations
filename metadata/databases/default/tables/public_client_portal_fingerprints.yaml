@@ -1,0 +1,68 @@
+table:
+  name: client_portal_fingerprints
+  schema: public
+object_relationships:
+  - name: client_portal_profile
+    using:
+      foreign_key_constraint_on: user
+insert_permissions:
+  - role: anonymous
+    permission:
+      check: {}
+      columns:
+        - id
+        - computer_id_one
+        - computer_id_two
+        - created_at
+        - updated_at
+        - user
+  - role: buyco_consultant
+    permission:
+      check: {}
+      columns:
+        - id
+        - computer_id_one
+        - computer_id_two
+        - created_at
+        - updated_at
+        - user
+  - role: buyco_consultant_admin
+    permission:
+      check: {}
+      columns:
+        - id
+        - computer_id_one
+        - computer_id_two
+        - created_at
+        - updated_at
+        - user
+  - role: external_consultant
+    permission:
+      check: {}
+      columns:
+        - id
+        - computer_id_one
+        - computer_id_two
+        - created_at
+        - updated_at
+        - user
+  - role: external_consultant_admin
+    permission:
+      check: {}
+      columns:
+        - id
+        - computer_id_one
+        - computer_id_two
+        - created_at
+        - updated_at
+        - user
+  - role: valuation_client
+    permission:
+      check: {}
+      columns:
+        - id
+        - computer_id_one
+        - computer_id_two
+        - created_at
+        - updated_at
+        - user

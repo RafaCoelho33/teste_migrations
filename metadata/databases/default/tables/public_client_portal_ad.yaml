@@ -1,0 +1,291 @@
+table:
+  name: client_portal_ad
+  schema: public
+object_relationships:
+  - name: cityByCity
+    using:
+      foreign_key_constraint_on: city
+  - name: client_portal_ad_status
+    using:
+      foreign_key_constraint_on:
+        column: ad_id
+        table:
+          name: client_portal_ad_status
+          schema: public
+  - name: client_portal_company
+    using:
+      foreign_key_constraint_on: company_id
+  - name: client_portal_profile
+    using:
+      foreign_key_constraint_on: profile_id
+  - name: companyTypeByCompanyType
+    using:
+      foreign_key_constraint_on: company_type
+  - name: sector
+    using:
+      foreign_key_constraint_on: company_sector
+array_relationships:
+  - name: client_portal_ad_statuses
+    using:
+      foreign_key_constraint_on:
+        column: ad_id
+        table:
+          name: client_portal_ad_status
+          schema: public
+  - name: client_portal_logs
+    using:
+      foreign_key_constraint_on:
+        column: ad_id
+        table:
+          name: client_portal_logs
+          schema: public
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - ad_aproved
+        - is_seasonal
+        - monthly_net_profit
+        - monthly_revenue
+        - selling_value
+        - employee_number
+        - foundation_year
+        - id_link
+        - other_imgs
+        - seasonality_periods
+        - ad_description
+        - ad_title
+        - company_sector
+        - localization
+        - main_img
+        - permanent_link
+        - selling_type
+        - created_at
+        - updated_at
+        - city
+        - company_id
+        - company_type
+        - id
+        - profile_id
+      filter: {}
+      allow_aggregations: true
+  - role: buyco_consultant
+    permission:
+      columns:
+        - ad_aproved
+        - is_seasonal
+        - monthly_net_profit
+        - monthly_revenue
+        - selling_value
+        - employee_number
+        - foundation_year
+        - id_link
+        - other_imgs
+        - seasonality_periods
+        - ad_description
+        - ad_title
+        - company_sector
+        - localization
+        - main_img
+        - permanent_link
+        - selling_type
+        - created_at
+        - updated_at
+        - city
+        - company_id
+        - company_type
+        - id
+        - profile_id
+      filter: {}
+      allow_aggregations: true
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - ad_aproved
+        - is_seasonal
+        - monthly_net_profit
+        - monthly_revenue
+        - selling_value
+        - employee_number
+        - foundation_year
+        - id_link
+        - other_imgs
+        - seasonality_periods
+        - ad_description
+        - ad_title
+        - company_sector
+        - localization
+        - main_img
+        - permanent_link
+        - selling_type
+        - created_at
+        - updated_at
+        - city
+        - company_id
+        - company_type
+        - id
+        - profile_id
+      filter: {}
+      allow_aggregations: true
+  - role: external_consultant
+    permission:
+      columns:
+        - ad_aproved
+        - is_seasonal
+        - monthly_net_profit
+        - monthly_revenue
+        - selling_value
+        - employee_number
+        - foundation_year
+        - id_link
+        - other_imgs
+        - seasonality_periods
+        - ad_description
+        - ad_title
+        - company_sector
+        - localization
+        - main_img
+        - permanent_link
+        - selling_type
+        - created_at
+        - updated_at
+        - city
+        - company_id
+        - company_type
+        - id
+        - profile_id
+      filter: {}
+      allow_aggregations: true
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - ad_aproved
+        - is_seasonal
+        - monthly_net_profit
+        - monthly_revenue
+        - selling_value
+        - employee_number
+        - foundation_year
+        - id_link
+        - other_imgs
+        - seasonality_periods
+        - ad_description
+        - ad_title
+        - company_sector
+        - localization
+        - main_img
+        - permanent_link
+        - selling_type
+        - created_at
+        - updated_at
+        - city
+        - company_id
+        - company_type
+        - id
+        - profile_id
+      filter: {}
+      allow_aggregations: true
+  - role: valuation_client
+    permission:
+      columns:
+        - ad_aproved
+        - is_seasonal
+        - monthly_net_profit
+        - monthly_revenue
+        - selling_value
+        - employee_number
+        - foundation_year
+        - id_link
+        - other_imgs
+        - seasonality_periods
+        - ad_description
+        - ad_title
+        - company_sector
+        - localization
+        - main_img
+        - permanent_link
+        - selling_type
+        - created_at
+        - updated_at
+        - city
+        - company_id
+        - company_type
+        - id
+        - profile_id
+      filter: {}
+      allow_aggregations: true
+update_permissions:
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - id_link
+        - profile_id
+        - company_id
+        - company_sector
+        - foundation_year
+        - employee_number
+        - is_seasonal
+        - seasonality_periods
+        - monthly_revenue
+        - monthly_net_profit
+        - selling_value
+        - selling_type
+        - localization
+        - ad_title
+        - ad_description
+        - ad_aproved
+        - created_at
+        - updated_at
+        - main_img
+        - other_imgs
+        - city
+        - company_type
+        - permanent_link
+      filter: {}
+      check: null
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - id
+        - id_link
+        - profile_id
+        - company_id
+        - company_sector
+        - foundation_year
+        - employee_number
+        - is_seasonal
+        - seasonality_periods
+        - monthly_revenue
+        - monthly_net_profit
+        - selling_value
+        - selling_type
+        - localization
+        - ad_title
+        - ad_description
+        - ad_aproved
+        - created_at
+        - updated_at
+        - main_img
+        - other_imgs
+        - city
+        - company_type
+        - permanent_link
+      filter: {}
+      check: null
+delete_permissions:
+  - role: buyco_consultant
+    permission:
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      filter: {}
+  - role: external_consultant
+    permission:
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      filter: {}
+  - role: valuation_client
+    permission:
+      filter: {}

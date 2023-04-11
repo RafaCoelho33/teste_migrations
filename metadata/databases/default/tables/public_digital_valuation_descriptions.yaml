@@ -1,0 +1,129 @@
+table:
+  name: digital_valuation_descriptions
+  schema: public
+object_relationships:
+  - name: digital_valuation_expense_expectation
+    using:
+      foreign_key_constraint_on: expense_expectation
+  - name: digital_valuation_information
+    using:
+      foreign_key_constraint_on: valuation_information_id
+  - name: digital_valuation_rg_type
+    using:
+      foreign_key_constraint_on: revenue_growth
+insert_permissions:
+  - role: anonymous
+    permission:
+      check: {}
+      columns:
+        - bought
+        - bought_price
+        - business_type
+        - bussiness_setup_description
+        - cost_expense_structure
+        - created_at
+        - customer
+        - evaluation_reason
+        - expansion
+        - expansion_phase
+        - expense_expectation
+        - governance
+        - id
+        - management_and_monitoring
+        - operation
+        - other_business_description
+        - owner
+        - partners
+        - revenue_growth
+        - strategic_plan
+        - strategy
+        - tax
+        - tax_regime
+        - updated_at
+        - valuation_information_id
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - bought
+        - bought_price
+        - business_type
+        - bussiness_setup_description
+        - cost_expense_structure
+        - created_at
+        - customer
+        - evaluation_reason
+        - expansion
+        - expansion_phase
+        - expense_expectation
+        - governance
+        - id
+        - management_and_monitoring
+        - operation
+        - other_business_description
+        - owner
+        - partners
+        - revenue_growth
+        - strategic_plan
+        - strategy
+        - tax
+        - tax_regime
+        - updated_at
+        - valuation_information_id
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - id
+        - operation
+        - partners
+        - tax
+        - owner
+        - customer
+        - expansion
+        - strategy
+        - business_type
+        - other_business_description
+        - evaluation_reason
+        - valuation_information_id
+        - bought
+        - bussiness_setup_description
+        - bought_price
+        - created_at
+        - updated_at
+        - management_and_monitoring
+        - expansion_phase
+        - strategic_plan
+        - cost_expense_structure
+        - governance
+        - revenue_growth
+        - expense_expectation
+        - tax_regime
+      filter: {}
+update_permissions:
+  - role: valuation_client
+    permission:
+      columns:
+        - bought
+        - bought_price
+        - business_type
+        - bussiness_setup_description
+        - cost_expense_structure
+        - customer
+        - evaluation_reason
+        - expansion
+        - expansion_phase
+        - expense_expectation
+        - governance
+        - management_and_monitoring
+        - operation
+        - other_business_description
+        - owner
+        - partners
+        - revenue_growth
+        - strategic_plan
+        - strategy
+        - tax
+        - tax_regime
+      filter: {}
+      check: null

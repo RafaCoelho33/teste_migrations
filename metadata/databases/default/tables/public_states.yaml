@@ -1,0 +1,66 @@
+table:
+  name: states
+  schema: public
+array_relationships:
+  - name: cities
+    using:
+      foreign_key_constraint_on:
+        column: state
+        table:
+          name: cities
+          schema: public
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - created_at
+        - id
+        - initials
+        - name
+        - updated_at
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - created_at
+        - id
+        - initials
+        - name
+        - updated_at
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - created_at
+        - id
+        - initials
+        - name
+        - updated_at
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - created_at
+        - id
+        - initials
+        - name
+        - updated_at
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - created_at
+        - id
+        - initials
+        - name
+        - updated_at
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - created_at
+        - id
+        - initials
+        - name
+        - updated_at
+      filter: {}

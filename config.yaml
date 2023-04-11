@@ -1,0 +1,7 @@
+version: 3
+endpoint: http://34.227.7.30/
+admin_secret: Buyco.dev
+metadata_directory: metadata
+actions:
+  kind: synchronous
+  handler_webhook_baseurl: http://localhost:3000

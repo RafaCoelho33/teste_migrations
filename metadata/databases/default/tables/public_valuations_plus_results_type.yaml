@@ -1,0 +1,43 @@
+table:
+  name: valuations_plus_results_type
+  schema: public
+is_enum: true
+array_relationships:
+  - name: valuations_plus_results_projects
+    using:
+      foreign_key_constraint_on:
+        column: type
+        table:
+          name: valuations_plus_results
+          schema: public
+select_permissions:
+  - role: buyco_consultant
+    permission:
+      columns:
+        - value
+        - description
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - value
+        - description
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - value
+        - description
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - value
+        - description
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - value
+        - description
+      filter: {}

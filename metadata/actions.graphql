@@ -1,0 +1,491 @@
+type Mutation {
+  AdvertisementCreator(
+    id: uuid!
+  ): SchemeOutput
+}
+
+type Mutation {
+  BusinessValuationCode(
+    email: String!
+    code: String!
+  ): BusinessValuationToken
+}
+
+type Mutation {
+  BusinessValuationLogin(
+    email: String!
+  ): BusinessValuationLoginResponse
+}
+
+type Mutation {
+  BusinessValuationNew(
+    id: String!
+  ): BusinessValualuationNewResponse
+}
+
+type Mutation {
+  BusinessValuationStart(
+    id: String!
+  ): BusinessValualuationStartResponse
+}
+
+type Mutation {
+  BusinessValuationVoucher(
+    id: String!
+    voucher: String!
+  ): BusinessValualuationVoucherResponse
+}
+
+type Mutation {
+  CreateMarket(
+    id: uuid!
+    main_market: uuid
+    specific_market: uuid
+    sector: String
+    activity1: uuid
+    activity2: uuid
+    activity3: uuid
+    type: uuid
+    other_type: String
+    damodaran_sector: uuid
+    damodaran_region: uuid
+  ): createdMarket
+}
+
+type Mutation {
+  CreateProfileTest(
+    interests: json!
+    period: String!
+    range: String!
+    name: String!
+    whatsapp: String!
+    email: String!
+    desempate: Int!
+    answers: json!
+  ): entradaId
+}
+
+type Mutation {
+  CreateValuation(
+    client_id: uuid!
+    cnpj: String!
+    year: Int
+    version: String!
+  ): createdValuation
+}
+
+type Mutation {
+  DeleteValuation(
+    id: uuid!
+  ): deletedValuation
+}
+
+type Mutation {
+  DigitalValuationCreate(
+    id: uuid!
+  ): GenerateValueId
+}
+
+type Mutation {
+  EraseWrongEmail(
+    name: String!
+    whatsapp: String!
+    email: String!
+  ): rows_affected
+}
+
+type Mutation {
+  FinishDataColect(
+    id: uuid!
+  ): GenerateValueId
+}
+
+type Mutation {
+  GeneratePDF(
+    id: uuid!
+  ): GenerateValueId
+}
+
+type Mutation {
+  GenerateValue(
+    id: uuid!
+  ): GenerateValueId
+}
+
+type Query {
+  GetCompanyTypes: Output
+}
+
+type Query {
+  GetConsultantBalanceSheet(
+    id: uuid!
+  ): GetConsultantDREOutput
+}
+
+type Query {
+  GetConsultantDRE(
+    id: uuid!
+  ): GetConsultantDREOutput
+}
+
+type Query {
+  GetGeneratedValue(
+    id: uuid!
+  ): GeneratedValue
+}
+
+type Query {
+  GetGenericPDFURL(
+    url: String
+  ): Url
+}
+
+type Query {
+  GetPDFURL(
+    id: uuid!
+  ): Url
+}
+
+type Query {
+  GetPDFURLcalculator(
+    id: uuid!
+  ): Url
+}
+
+type Query {
+  GetSidaClientHistory(
+    client_id: uuid!
+  ): Historic
+}
+
+type Query {
+  GetSidaClientState(
+    client_id: uuid!
+  ): ClientState
+}
+
+type Mutation {
+  Login(
+    email: String!
+    password: String!
+  ): JsonWebToken
+}
+
+type Mutation {
+  LoginColect(
+    id: uuid!
+    email: String!
+    cnpj: String!
+  ): JsonWebToken
+}
+
+type Mutation {
+  MarketplaceChangePassword(
+    email: String!
+    oldPassword: String!
+    newPassword: String!
+  ): MarketplaceCommonResponse
+}
+
+type Mutation {
+  MarketplaceChangeSensitiveInformation(
+    token: String!
+    profile_id: uuid!
+    name: String!
+    interests: json!
+    email: String!
+    password: String!
+  ): MarketplaceChangeSensitiveInformationResponse
+}
+
+type Mutation {
+  MarketplaceCheckCode(
+    email: String!
+    code: String!
+  ): MarketplaceCheckCodeResponse
+}
+
+type Mutation {
+  MarketplaceCheckSMSCode(
+    phone: String!
+    code: String!
+  ): MarketplaceCheckSMSCodeResponse
+}
+
+type Query {
+  MarketplaceCheckToken(
+    phone: String!
+    token: String!
+  ): MarketplaceCheckTokenResponse
+}
+
+type Mutation {
+  MarketplaceCreateCode(
+    email: String!
+    name: String!
+    phone: String!
+    interests: [String]!
+  ): MarketplaceCommonResponse
+}
+
+type Mutation {
+  MarketplaceCreateSMSCode(
+    phone: String!
+  ): MarketplaceCreateSMSCodeResponse
+}
+
+type Mutation {
+  MarketplaceCreateToken(
+    phone: String!
+  ): MarketplaceCreateTokenResponse
+}
+
+type Mutation {
+  MarketplaceEmailCheck(
+    email: String!
+  ): MarketplaceCommonResponse
+}
+
+type Mutation {
+  MarketplaceForgotPassword(
+    email: String!
+  ): MarketplaceCommonResponse
+}
+
+type Mutation {
+  NewProjectionSheet(
+    id: String!
+  ): GenericResponse
+}
+
+type Mutation {
+  SaveProjectionSheet(
+    id: String!
+  ): GenericResponse
+}
+
+type Mutation {
+  SendEmailSida(
+    id: uuid!
+  ): GenerateValueId
+}
+
+type Mutation {
+  SendEmailSidaContador(
+    id: uuid!
+    name: String!
+    email: String!
+  ): GenerateValueId
+}
+
+type Mutation {
+  SetSidaClientPayment(
+    client_id: uuid!
+    debt_paid: float8!
+    total_debt: float8!
+  ): setPaymentOutput
+}
+
+type Mutation {
+  Signup(
+    email: String!
+    password: String!
+  ): CreateUserOutput
+}
+
+type Mutation {
+  SolicitarRevisao(
+    id: uuid!
+  ): GenerateValueId
+}
+
+type Mutation {
+  StartCalculator(
+    id: uuid!
+  ): GenerateValueId
+}
+
+type Mutation {
+  StartCalculatorAcelerador(
+    id: uuid!
+  ): GenerateValueId
+}
+
+type Mutation {
+  SwitchSidaClientLock(
+    client_id: uuid!
+  ): switchLockOutput
+}
+
+type Mutation {
+  UpdateAddress(
+    id: uuid!
+    address: String!
+  ): updatedAddress
+}
+
+type Mutation {
+  UpdateProjectionSheet(
+    id: String!
+  ): GenericResponse
+}
+
+type CreateUserOutput {
+  id: uuid!
+  email: String!
+}
+
+type JsonWebToken {
+  token: String!
+  id: String!
+  otherId: String!
+}
+
+type LoginOutput {
+  id: uuid!
+  name: String!
+  email: String!
+  token: String!
+}
+
+type createdValuation {
+  id: uuid!
+}
+
+type updatedAddress {
+  id: uuid!
+}
+
+type deletedValuation {
+  id: uuid!
+}
+
+type createdMarket {
+  id: uuid!
+}
+
+type GeneratedValue {
+  data: json!
+}
+
+type GenerateValueId {
+  id: uuid!
+}
+
+type Url {
+  url: String!
+}
+
+type SendEmailSida {
+  id: uuid!
+}
+
+type entradaId {
+  id: uuid!
+}
+
+type rows_affected {
+  num_of_rows: Int!
+}
+
+type SchemeOutput {
+  data: json!
+  id: uuid!
+}
+
+type Output {
+  tipos: json!
+}
+
+type GetConsultantDREOutput {
+  data: json!
+}
+
+type ClientState {
+  is_overdue: Boolean!
+  debt_paid: float8!
+  total_debt: float8!
+  locked: Boolean!
+}
+
+type Finished {
+  finished: Boolean!
+}
+
+type Historic {
+  history: json!
+}
+
+type setPaymentOutput {
+  done: Boolean!
+}
+
+type switchLockOutput {
+  done: Boolean!
+}
+
+type MarketplaceCommonResponse {
+  check: Boolean!
+  message: String!
+}
+
+type MarketplaceCheckCodeResponse {
+  authorization: Boolean!
+  message: String!
+}
+
+type MarketplaceCreateSMSCodeResponse {
+  check: Boolean!
+  message: String!
+}
+
+type MarketplaceCheckSMSCodeResponse {
+  authorization: Boolean!
+  message: String!
+}
+
+type MarketplaceCreateTokenResponse {
+  check: Boolean!
+  message: String!
+}
+
+type MarketplaceCheckTokenResponse {
+  check: Boolean!
+  message: String
+  profile_id: uuid
+  token: String
+}
+
+type MarketplaceChangeSensitiveInformationResponse {
+  check: Boolean!
+  message: String!
+}
+
+type BusinessValuationLoginResponse {
+  new_user: Boolean
+  message: String
+}
+
+type BusinessValuationToken {
+  id: String
+  token: String
+  message: String
+}
+
+type BusinessValualuationNewResponse {
+  message: String!
+  information_id: String
+}
+
+type BusinessValualuationStartResponse {
+  message: String
+}
+
+type GenericResponse {
+  data: json!
+}
+
+type BusinessValualuationVoucherResponse {
+  message: String!
+}
+

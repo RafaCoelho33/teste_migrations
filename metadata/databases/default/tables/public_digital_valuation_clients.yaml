@@ -1,0 +1,177 @@
+table:
+  name: digital_valuation_clients
+  schema: public
+object_relationships:
+  - name: consultingCompanyByConsultingCompany
+    using:
+      foreign_key_constraint_on: consulting_company
+array_relationships:
+  - name: digital_valuation_informations
+    using:
+      foreign_key_constraint_on:
+        column: digital_valuation_client
+        table:
+          name: digital_valuation_information
+          schema: public
+  - name: digital_valuation_vouchers
+    using:
+      foreign_key_constraint_on:
+        column: valuation_client
+        table:
+          name: digital_valuation_voucher
+          schema: public
+insert_permissions:
+  - role: buyco_consultant_admin
+    permission:
+      check: {}
+      columns:
+        - id
+        - consulting_company
+        - name
+        - phone
+        - email
+        - quantity
+        - code
+        - cpf
+        - origin
+        - created_at
+        - updated_at
+        - expiration_date
+  - role: external_consultant_admin
+    permission:
+      check: {}
+      columns:
+        - quantity
+        - code
+        - cpf
+        - email
+        - expiration_date
+        - name
+        - origin
+        - phone
+        - created_at
+        - updated_at
+        - consulting_company
+        - id
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - consulting_company
+        - name
+        - phone
+        - email
+        - quantity
+        - code
+        - cpf
+        - origin
+        - created_at
+        - updated_at
+        - expiration_date
+      filter: {}
+  - role: buyco
+    permission:
+      columns:
+        - consulting_company
+        - email
+        - id
+        - name
+        - phone
+        - quantity
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - consulting_company
+        - email
+        - id
+        - name
+        - phone
+        - quantity
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - consulting_company
+        - email
+        - id
+        - name
+        - phone
+        - quantity
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - consulting_company
+        - email
+        - id
+        - name
+        - phone
+        - quantity
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - consulting_company
+        - email
+        - id
+        - name
+        - phone
+        - quantity
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - consulting_company
+        - cpf
+        - email
+        - id
+        - name
+        - phone
+        - quantity
+      filter: {}
+update_permissions:
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - quantity
+      filter: {}
+      check: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - quantity
+      filter: {}
+      check: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - name
+      filter: {}
+      check: null
+event_triggers:
+  - name: on_digital_clients_update
+    definition:
+      enable_manual: false
+      update:
+        columns:
+          - quantity
+    retry_conf:
+      interval_sec: 10
+      num_retries: 0
+      timeout_sec: 60
+    webhook: https://y6evqqekl8.execute-api.us-east-1.amazonaws.com/
+  - name: on_digital_val_send_email
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+      update:
+        columns:
+          - quantity
+    retry_conf:
+      interval_sec: 10
+      num_retries: 0
+      timeout_sec: 60
+    webhook: https://yras30aqzk.execute-api.us-east-1.amazonaws.com/digital

@@ -1,0 +1,387 @@
+table:
+  name: valuations_status
+  schema: public
+object_relationships:
+  - name: consultantAndValuationRef
+    using:
+      manual_configuration:
+        column_mapping:
+          valuation: valuation
+        insertion_order: null
+        remote_table:
+          name: consultants_and_valuations
+          schema: public
+  - name: valuationByValuation
+    using:
+      foreign_key_constraint_on: valuation
+insert_permissions:
+  - role: buyco_consultant
+    permission:
+      check:
+        consultantAndValuationRef:
+          consultant:
+            _eq: x-hasura-consultant-id
+      columns:
+        - id
+        - valuation
+        - avaliable_value_generation
+        - avaliable_pdf_generation
+        - avaliable_review
+        - status_value_generation
+        - status_pdf_generation
+        - pdf_link
+        - created_at
+        - updated_at
+        - valuation_done
+        - in_catalog
+  - role: buyco_consultant_admin
+    permission:
+      check:
+        consultantAndValuationRef:
+          valuationsRef:
+            consulting_companies:
+              _eq: x-hasura-company-id
+      columns:
+        - id
+        - valuation
+        - avaliable_value_generation
+        - avaliable_pdf_generation
+        - avaliable_review
+        - status_value_generation
+        - status_pdf_generation
+        - pdf_link
+        - created_at
+        - updated_at
+        - valuation_done
+        - in_catalog
+  - role: external_consultant
+    permission:
+      check:
+        consultantAndValuationRef:
+          consultant:
+            _eq: x-hasura-consultant-id
+      columns:
+        - id
+        - valuation
+        - avaliable_value_generation
+        - avaliable_pdf_generation
+        - avaliable_review
+        - status_value_generation
+        - status_pdf_generation
+        - pdf_link
+        - created_at
+        - updated_at
+        - valuation_done
+        - in_catalog
+  - role: external_consultant_admin
+    permission:
+      check:
+        consultantAndValuationRef:
+          valuationsRef:
+            consulting_companies:
+              _eq: x-hasura-company-id
+      columns:
+        - id
+        - valuation
+        - avaliable_value_generation
+        - avaliable_pdf_generation
+        - avaliable_review
+        - status_value_generation
+        - status_pdf_generation
+        - pdf_link
+        - created_at
+        - updated_at
+        - valuation_done
+        - in_catalog
+  - role: valuation_client
+    permission:
+      check:
+        valuation:
+          _eq: x-hasura-valuation-id
+      columns:
+        - in_catalog
+        - valuation_done
+        - avaliable_pdf_generation
+        - avaliable_review
+        - avaliable_value_generation
+        - pdf_link
+        - status_pdf_generation
+        - status_value_generation
+        - created_at
+        - updated_at
+        - id
+        - valuation
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - avaliable_pdf_generation
+        - avaliable_review
+        - avaliable_value_generation
+        - created_at
+        - finalized_at
+        - id
+        - in_catalog
+        - pdf_link
+        - status_pdf_generation
+        - status_value_generation
+        - updated_at
+        - valuation
+        - valuation_done
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - avaliable_pdf_generation
+        - avaliable_review
+        - avaliable_value_generation
+        - created_at
+        - finalized_at
+        - id
+        - in_catalog
+        - pdf_link
+        - status_pdf_generation
+        - status_value_generation
+        - updated_at
+        - valuation
+        - valuation_done
+      filter:
+        consultantAndValuationRef:
+          consultant:
+            _eq: x-hasura-consultant-id
+      allow_aggregations: true
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - avaliable_pdf_generation
+        - avaliable_review
+        - avaliable_value_generation
+        - created_at
+        - finalized_at
+        - id
+        - in_catalog
+        - pdf_link
+        - status_pdf_generation
+        - status_value_generation
+        - updated_at
+        - valuation
+        - valuation_done
+      filter:
+        consultantAndValuationRef:
+          valuationsRef:
+            consulting_companies:
+              _eq: x-hasura-company-id
+      allow_aggregations: true
+  - role: external_consultant
+    permission:
+      columns:
+        - avaliable_pdf_generation
+        - avaliable_review
+        - avaliable_value_generation
+        - created_at
+        - finalized_at
+        - id
+        - in_catalog
+        - pdf_link
+        - status_pdf_generation
+        - status_value_generation
+        - updated_at
+        - valuation
+        - valuation_done
+      filter:
+        consultantAndValuationRef:
+          consultant:
+            _eq: x-hasura-consultant-id
+      allow_aggregations: true
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - avaliable_pdf_generation
+        - avaliable_review
+        - avaliable_value_generation
+        - created_at
+        - finalized_at
+        - id
+        - in_catalog
+        - pdf_link
+        - status_pdf_generation
+        - status_value_generation
+        - updated_at
+        - valuation
+        - valuation_done
+      filter:
+        consultantAndValuationRef:
+          valuationsRef:
+            consulting_companies:
+              _eq: x-hasura-company-id
+      allow_aggregations: true
+  - role: valuation_client
+    permission:
+      columns:
+        - avaliable_pdf_generation
+        - avaliable_review
+        - avaliable_value_generation
+        - created_at
+        - finalized_at
+        - id
+        - in_catalog
+        - pdf_link
+        - status_pdf_generation
+        - status_value_generation
+        - updated_at
+        - valuation
+        - valuation_done
+      filter:
+        valuation:
+          _eq: x-hasura-valuation-id
+update_permissions:
+  - role: buyco_consultant
+    permission:
+      columns:
+        - avaliable_pdf_generation
+        - avaliable_review
+        - avaliable_value_generation
+        - created_at
+        - finalized_at
+        - id
+        - in_catalog
+        - pdf_link
+        - status_pdf_generation
+        - status_value_generation
+        - updated_at
+        - valuation
+        - valuation_done
+      filter:
+        consultantAndValuationRef:
+          consultant:
+            _eq: x-hasura-consultant-id
+      check: null
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - avaliable_pdf_generation
+        - avaliable_review
+        - avaliable_value_generation
+        - created_at
+        - finalized_at
+        - id
+        - in_catalog
+        - pdf_link
+        - status_pdf_generation
+        - status_value_generation
+        - updated_at
+        - valuation
+        - valuation_done
+      filter:
+        consultantAndValuationRef:
+          valuationsRef:
+            consulting_companies:
+              _eq: x-hasura-company-id
+      check: null
+  - role: external_consultant
+    permission:
+      columns:
+        - avaliable_pdf_generation
+        - avaliable_review
+        - avaliable_value_generation
+        - created_at
+        - finalized_at
+        - id
+        - in_catalog
+        - pdf_link
+        - status_pdf_generation
+        - status_value_generation
+        - updated_at
+        - valuation
+        - valuation_done
+      filter:
+        consultantAndValuationRef:
+          consultant:
+            _eq: x-hasura-consultant-id
+      check: null
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - avaliable_pdf_generation
+        - avaliable_review
+        - avaliable_value_generation
+        - created_at
+        - finalized_at
+        - id
+        - in_catalog
+        - pdf_link
+        - status_pdf_generation
+        - status_value_generation
+        - updated_at
+        - valuation
+        - valuation_done
+      filter:
+        consultantAndValuationRef:
+          valuationsRef:
+            consulting_companies:
+              _eq: x-hasura-company-id
+      check: null
+  - role: valuation_client
+    permission:
+      columns:
+        - avaliable_pdf_generation
+        - avaliable_review
+        - avaliable_value_generation
+        - created_at
+        - finalized_at
+        - id
+        - in_catalog
+        - pdf_link
+        - status_pdf_generation
+        - status_value_generation
+        - updated_at
+        - valuation
+        - valuation_done
+      filter:
+        valuation:
+          _eq: x-hasura-valuation-id
+      check: null
+delete_permissions:
+  - role: buyco_consultant
+    permission:
+      filter:
+        consultantAndValuationRef:
+          consultant:
+            _eq: x-hasura-consultant-id
+  - role: buyco_consultant_admin
+    permission:
+      filter:
+        consultantAndValuationRef:
+          valuationsRef:
+            consulting_companies:
+              _eq: x-hasura-company-id
+  - role: external_consultant
+    permission:
+      filter:
+        consultantAndValuationRef:
+          consultant:
+            _eq: x-hasura-consultant-id
+  - role: external_consultant_admin
+    permission:
+      filter:
+        consultantAndValuationRef:
+          valuationsRef:
+            consulting_companies:
+              _eq: x-hasura-company-id
+  - role: valuation_client
+    permission:
+      filter:
+        valuation:
+          _eq: x-hasura-valuation-id
+event_triggers:
+  - name: on_valuations_status_update
+    definition:
+      enable_manual: false
+      update:
+        columns:
+          - avaliable_value_generation
+    retry_conf:
+      interval_sec: 10
+      num_retries: 0
+      timeout_sec: 60
+    webhook: https://ns9rdflr61.execute-api.us-east-1.amazonaws.com/on_valuations_status_update

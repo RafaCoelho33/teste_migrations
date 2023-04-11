@@ -1,0 +1,18 @@
+table:
+  name: balance_companies
+  schema: public
+object_relationships:
+  - name: open_companies_sector
+    using:
+      foreign_key_constraint_on: sector
+  - name: open_companies_sub_sector
+    using:
+      foreign_key_constraint_on: sub_sector
+array_relationships:
+  - name: balance_financials
+    using:
+      foreign_key_constraint_on:
+        column: company_id
+        table:
+          name: balance_financial
+          schema: public

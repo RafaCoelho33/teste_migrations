@@ -1,0 +1,83 @@
+table:
+  name: sectors
+  schema: public
+is_enum: true
+array_relationships:
+  - name: branches
+    using:
+      foreign_key_constraint_on:
+        column: sector
+        table:
+          name: branches
+          schema: public
+  - name: client_portal_ads
+    using:
+      foreign_key_constraint_on:
+        column: company_sector
+        table:
+          name: client_portal_ad
+          schema: public
+  - name: differentials
+    using:
+      foreign_key_constraint_on:
+        column: sector
+        table:
+          name: differentials
+          schema: public
+  - name: valuation_and_markets
+    using:
+      foreign_key_constraint_on:
+        column: sector
+        table:
+          name: valuations_and_market
+          schema: public
+  - name: valuations_financial_data_types
+    using:
+      foreign_key_constraint_on:
+        column: sector
+        table:
+          name: valuations_financial_data_type
+          schema: public
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - value
+        - name
+      filter: {}
+  - role: buyco
+    permission:
+      columns:
+        - value
+        - name
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - value
+        - name
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - value
+        - name
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - value
+        - name
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - value
+        - name
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - value
+        - name
+      filter: {}

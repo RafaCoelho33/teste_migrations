@@ -1,0 +1,19 @@
+table:
+  name: calculator_whatsapp_checker
+  schema: public
+object_relationships:
+  - name: calculator_lead
+    using:
+      foreign_key_constraint_on: lead
+event_triggers:
+  - name: on_wpp_check_update
+    definition:
+      enable_manual: false
+      update:
+        columns:
+          - valid
+    retry_conf:
+      interval_sec: 10
+      num_retries: 0
+      timeout_sec: 60
+    webhook: https://ns9rdflr61.execute-api.us-east-1.amazonaws.com/on_wpp_check_update

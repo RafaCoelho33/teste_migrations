@@ -1,0 +1,21 @@
+table:
+  name: calculator_values
+  schema: public
+object_relationships:
+  - name: calculator_lead
+    using:
+      foreign_key_constraint_on: lead
+  - name: calculator_values_type
+    using:
+      foreign_key_constraint_on: type
+insert_permissions:
+  - role: anonymous
+    permission:
+      check: {}
+      columns:
+        - value
+        - type
+        - created_at
+        - updated_at
+        - id
+        - lead

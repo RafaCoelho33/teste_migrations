@@ -1,0 +1,100 @@
+table:
+  name: indexes
+  schema: public
+object_relationships:
+  - name: indexesType
+    using:
+      foreign_key_constraint_on: type
+insert_permissions:
+  - role: buyco
+    permission:
+      check: {}
+      columns:
+        - id
+        - date
+        - value
+        - type
+        - created_at
+        - updated_at
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - date
+        - value
+        - type
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco
+    permission:
+      columns:
+        - id
+        - date
+        - value
+        - type
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - date
+        - value
+        - type
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - id
+        - date
+        - value
+        - type
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: external_consultant
+    permission:
+      columns:
+        - id
+        - date
+        - value
+        - type
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - id
+        - date
+        - value
+        - type
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+update_permissions:
+  - role: buyco
+    permission:
+      columns:
+        - date
+        - value
+        - type
+        - created_at
+        - updated_at
+        - id
+      filter: {}
+      check: {}
+delete_permissions:
+  - role: buyco
+    permission:
+      filter: {}

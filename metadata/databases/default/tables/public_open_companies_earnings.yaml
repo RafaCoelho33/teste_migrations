@@ -1,0 +1,10 @@
+table:
+  name: open_companies_earnings
+  schema: public
+object_relationships:
+  - name: open_companies_earnings_type
+    using:
+      foreign_key_constraint_on: type
+  - name: open_companies_information
+    using:
+      foreign_key_constraint_on: company

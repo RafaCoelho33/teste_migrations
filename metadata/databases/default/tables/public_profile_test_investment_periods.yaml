@@ -1,0 +1,11 @@
+table:
+  name: profile_test_investment_periods
+  schema: public
+array_relationships:
+  - name: profile_test_informations
+    using:
+      foreign_key_constraint_on:
+        column: investment_period
+        table:
+          name: profile_test_information
+          schema: public

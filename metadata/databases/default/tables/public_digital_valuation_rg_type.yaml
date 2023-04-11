@@ -1,0 +1,11 @@
+table:
+  name: digital_valuation_rg_type
+  schema: public
+array_relationships:
+  - name: digital_valuation_descriptions
+    using:
+      foreign_key_constraint_on:
+        column: revenue_growth
+        table:
+          name: digital_valuation_descriptions
+          schema: public

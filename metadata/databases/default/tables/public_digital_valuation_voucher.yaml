@@ -1,0 +1,102 @@
+table:
+  name: digital_valuation_voucher
+  schema: public
+object_relationships:
+  - name: consultingCompanyByConsultingCompany
+    using:
+      foreign_key_constraint_on: consulting_company
+  - name: digital_valuation_client
+    using:
+      foreign_key_constraint_on: valuation_client
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - valuation_client
+        - consulting_company
+        - voucher
+        - valid_until
+        - used_when
+        - postback
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco
+    permission:
+      columns:
+        - voucher
+        - postback
+        - created_at
+        - updated_at
+        - used_when
+        - valid_until
+        - consulting_company
+        - id
+        - valuation_client
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - voucher
+        - postback
+        - created_at
+        - updated_at
+        - used_when
+        - valid_until
+        - consulting_company
+        - id
+        - valuation_client
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - voucher
+        - postback
+        - created_at
+        - updated_at
+        - used_when
+        - valid_until
+        - consulting_company
+        - id
+        - valuation_client
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - voucher
+        - postback
+        - created_at
+        - updated_at
+        - used_when
+        - valid_until
+        - consulting_company
+        - id
+        - valuation_client
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - voucher
+        - postback
+        - created_at
+        - updated_at
+        - used_when
+        - valid_until
+        - consulting_company
+        - id
+        - valuation_client
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - voucher
+        - postback
+        - created_at
+        - updated_at
+        - used_when
+        - valid_until
+        - consulting_company
+        - id
+        - valuation_client
+      filter: {}

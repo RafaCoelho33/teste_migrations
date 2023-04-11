@@ -1,0 +1,277 @@
+table:
+  name: sector_analysis
+  schema: public
+object_relationships:
+  - name: sectorAnalysisType
+    using:
+      foreign_key_constraint_on: type
+array_relationships:
+  - name: ageGroups
+    using:
+      foreign_key_constraint_on:
+        column: sector_analysis
+        table:
+          name: sector_analysis_and_age_groups
+          schema: public
+  - name: sectorAnalysisActivities
+    using:
+      foreign_key_constraint_on:
+        column: sector_analysis
+        table:
+          name: sector_analysis_activities
+          schema: public
+  - name: sectorAnalysisIndicators
+    using:
+      foreign_key_constraint_on:
+        column: sector_analysis
+        table:
+          name: sector_analysis_indicators
+          schema: public
+  - name: suggestions
+    using:
+      manual_configuration:
+        column_mapping:
+          id: sector_analysis
+        insertion_order: null
+        remote_table:
+          name: suggestions
+          schema: public
+  - name: targetAudiences
+    using:
+      foreign_key_constraint_on:
+        column: sector_analysis
+        table:
+          name: sector_analysis_and_target_audiences
+          schema: public
+  - name: valuationAndMarketsBySpecificMarket
+    using:
+      foreign_key_constraint_on:
+        column: specific_market
+        table:
+          name: valuations_and_market
+          schema: public
+  - name: valuation_and_markets
+    using:
+      foreign_key_constraint_on:
+        column: main_market
+        table:
+          name: valuations_and_market
+          schema: public
+insert_permissions:
+  - role: buyco
+    permission:
+      check: {}
+      columns:
+        - audience
+        - comments
+        - created_at
+        - deleted_at
+        - employees
+        - enabled
+        - general_summary
+        - id
+        - image
+        - name
+        - opportunity
+        - quantity
+        - specific_summary
+        - title
+        - type
+        - updated_at
+  - role: buyco_consultant_admin
+    permission:
+      check: {}
+      columns:
+        - audience
+        - comments
+        - created_at
+        - deleted_at
+        - employees
+        - enabled
+        - general_summary
+        - id
+        - image
+        - name
+        - opportunity
+        - quantity
+        - specific_summary
+        - title
+        - type
+        - updated_at
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - audience
+        - comments
+        - created_at
+        - deleted_at
+        - employees
+        - enabled
+        - general_summary
+        - id
+        - image
+        - name
+        - opportunity
+        - quantity
+        - specific_summary
+        - title
+        - type
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: buyco
+    permission:
+      columns:
+        - audience
+        - comments
+        - created_at
+        - deleted_at
+        - employees
+        - enabled
+        - general_summary
+        - id
+        - image
+        - name
+        - opportunity
+        - quantity
+        - specific_summary
+        - title
+        - type
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: buyco_consultant
+    permission:
+      columns:
+        - audience
+        - comments
+        - created_at
+        - deleted_at
+        - employees
+        - enabled
+        - general_summary
+        - id
+        - image
+        - name
+        - opportunity
+        - quantity
+        - specific_summary
+        - title
+        - type
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - audience
+        - comments
+        - created_at
+        - deleted_at
+        - employees
+        - enabled
+        - general_summary
+        - id
+        - image
+        - name
+        - opportunity
+        - quantity
+        - specific_summary
+        - title
+        - type
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: external_consultant
+    permission:
+      columns:
+        - audience
+        - comments
+        - created_at
+        - deleted_at
+        - employees
+        - enabled
+        - general_summary
+        - id
+        - image
+        - name
+        - opportunity
+        - quantity
+        - specific_summary
+        - title
+        - type
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - audience
+        - comments
+        - created_at
+        - deleted_at
+        - employees
+        - enabled
+        - general_summary
+        - id
+        - image
+        - name
+        - opportunity
+        - quantity
+        - specific_summary
+        - title
+        - type
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+update_permissions:
+  - role: buyco
+    permission:
+      columns:
+        - audience
+        - comments
+        - created_at
+        - deleted_at
+        - employees
+        - enabled
+        - general_summary
+        - id
+        - image
+        - name
+        - opportunity
+        - quantity
+        - specific_summary
+        - title
+        - type
+        - updated_at
+      filter: {}
+      check: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - audience
+        - comments
+        - created_at
+        - deleted_at
+        - employees
+        - enabled
+        - general_summary
+        - id
+        - image
+        - name
+        - opportunity
+        - quantity
+        - specific_summary
+        - title
+        - type
+        - updated_at
+      filter: {}
+      check: null
+delete_permissions:
+  - role: buyco
+    permission:
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      filter: {}

@@ -1,0 +1,101 @@
+table:
+  name: damodaran_total_betas
+  schema: public
+object_relationships:
+  - name: damodaran_industry
+    using:
+      foreign_key_constraint_on: industry
+  - name: damodaran_region
+    using:
+      foreign_key_constraint_on: region
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - year
+        - industry
+        - region
+        - avg_unlevered_beta
+        - avg_levered_beta
+        - avg_correlation_with_market
+        - total_unlevered_beta
+        - total_levered_beta
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - avg_correlation_with_market
+        - avg_levered_beta
+        - avg_unlevered_beta
+        - total_levered_beta
+        - total_unlevered_beta
+        - year
+        - created_at
+        - updated_at
+        - id
+        - industry
+        - region
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - avg_correlation_with_market
+        - avg_levered_beta
+        - avg_unlevered_beta
+        - total_levered_beta
+        - total_unlevered_beta
+        - year
+        - created_at
+        - updated_at
+        - id
+        - industry
+        - region
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - avg_correlation_with_market
+        - avg_levered_beta
+        - avg_unlevered_beta
+        - total_levered_beta
+        - total_unlevered_beta
+        - year
+        - created_at
+        - updated_at
+        - id
+        - industry
+        - region
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - avg_correlation_with_market
+        - avg_levered_beta
+        - avg_unlevered_beta
+        - total_levered_beta
+        - total_unlevered_beta
+        - year
+        - created_at
+        - updated_at
+        - id
+        - industry
+        - region
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - avg_correlation_with_market
+        - avg_levered_beta
+        - avg_unlevered_beta
+        - total_levered_beta
+        - total_unlevered_beta
+        - year
+        - created_at
+        - updated_at
+        - id
+        - industry
+        - region
+      filter: {}

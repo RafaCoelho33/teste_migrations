@@ -1,0 +1,66 @@
+table:
+  name: simples_nacional_range
+  schema: public
+array_relationships:
+  - name: simples_nacional_aliquots
+    using:
+      foreign_key_constraint_on:
+        column: range
+        table:
+          name: simples_nacional_aliquot
+          schema: public
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - min
+        - max
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - min
+        - max
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - id
+        - min
+        - max
+        - created_at
+        - updated_at
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - id
+        - min
+        - max
+        - created_at
+        - updated_at
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - id
+        - min
+        - max
+        - created_at
+        - updated_at
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - id
+        - min
+        - max
+        - created_at
+        - updated_at
+      filter: {}

@@ -1,0 +1,107 @@
+table:
+  name: sector_analysis_and_age_groups
+  schema: public
+object_relationships:
+  - name: ageGroup
+    using:
+      foreign_key_constraint_on: age_groups
+  - name: sectorAnalysisRef
+    using:
+      foreign_key_constraint_on: sector_analysis
+insert_permissions:
+  - role: buyco
+    permission:
+      check: {}
+      columns:
+        - sector_analysis
+        - age_groups
+        - created_at
+        - updated_at
+  - role: buyco_consultant_admin
+    permission:
+      check: {}
+      columns:
+        - sector_analysis
+        - age_groups
+        - created_at
+        - updated_at
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - sector_analysis
+        - age_groups
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco
+    permission:
+      columns:
+        - sector_analysis
+        - age_groups
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: buyco_consultant
+    permission:
+      columns:
+        - sector_analysis
+        - age_groups
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - sector_analysis
+        - age_groups
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: external_consultant
+    permission:
+      columns:
+        - sector_analysis
+        - age_groups
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - sector_analysis
+        - age_groups
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+update_permissions:
+  - role: buyco
+    permission:
+      columns:
+        - created_at
+        - updated_at
+        - age_groups
+        - sector_analysis
+      filter: {}
+      check: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - sector_analysis
+        - age_groups
+        - created_at
+        - updated_at
+      filter: {}
+      check: null
+delete_permissions:
+  - role: buyco
+    permission:
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      filter: {}

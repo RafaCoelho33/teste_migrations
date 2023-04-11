@@ -1,0 +1,3 @@
+table:
+  name: client_portal_sms_send
+  schema: public

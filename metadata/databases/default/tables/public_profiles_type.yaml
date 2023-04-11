@@ -1,0 +1,60 @@
+table:
+  name: profiles_type
+  schema: public
+array_relationships:
+  - name: client_portal_profiles
+    using:
+      foreign_key_constraint_on:
+        column: profile_type
+        table:
+          name: client_portal_profiles
+          schema: public
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - created_at
+        - description
+        - type
+        - updated_at
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - created_at
+        - description
+        - type
+        - updated_at
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - created_at
+        - description
+        - type
+        - updated_at
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - created_at
+        - description
+        - type
+        - updated_at
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - created_at
+        - description
+        - type
+        - updated_at
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - created_at
+        - description
+        - type
+        - updated_at
+      filter: {}

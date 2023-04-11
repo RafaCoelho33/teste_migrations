@@ -1,0 +1,41 @@
+table:
+  name: consultants_and_valuations_type
+  schema: public
+is_enum: true
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - value
+        - name
+      filter: {}
+  - role: buyco
+    permission:
+      columns:
+        - name
+        - value
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - value
+        - name
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - value
+        - name
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - value
+        - name
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - value
+        - name
+      filter: {}

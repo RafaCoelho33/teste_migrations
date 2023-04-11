@@ -1,0 +1,49 @@
+table:
+  name: bacen_indicator_types
+  schema: public
+is_enum: true
+array_relationships:
+  - name: bacen_anual_marketplace_expectations
+    using:
+      foreign_key_constraint_on:
+        column: indicator_type
+        table:
+          name: bacen_anual_marketplace_expectations
+          schema: public
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - value
+        - description
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - description
+        - value
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - description
+        - value
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - description
+        - value
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - description
+        - value
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - description
+        - value
+      filter: {}

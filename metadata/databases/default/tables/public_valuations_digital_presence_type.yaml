@@ -1,0 +1,19 @@
+table:
+  name: valuations_digital_presence_type
+  schema: public
+is_enum: true
+array_relationships:
+  - name: valuations_digital_presence_texts
+    using:
+      foreign_key_constraint_on:
+        column: type
+        table:
+          name: valuations_digital_presence_text
+          schema: public
+  - name: valuations_digital_presences
+    using:
+      foreign_key_constraint_on:
+        column: social_network
+        table:
+          name: valuations_digital_presence
+          schema: public

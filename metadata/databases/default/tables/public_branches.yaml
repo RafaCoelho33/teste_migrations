@@ -1,0 +1,70 @@
+table:
+  name: branches
+  schema: public
+object_relationships:
+  - name: sectorBySector
+    using:
+      foreign_key_constraint_on: sector
+array_relationships:
+  - name: company_types
+    using:
+      foreign_key_constraint_on:
+        column: branch
+        table:
+          name: company_types
+          schema: public
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - name
+        - sector
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - name
+        - sector
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - id
+        - name
+        - sector
+        - created_at
+        - updated_at
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - id
+        - name
+        - sector
+        - created_at
+        - updated_at
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - id
+        - name
+        - sector
+        - created_at
+        - updated_at
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - id
+        - name
+        - sector
+        - created_at
+        - updated_at
+      filter: {}

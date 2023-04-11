@@ -1,0 +1,3 @@
+table:
+  name: client_portal_whatsapp_send
+  schema: public

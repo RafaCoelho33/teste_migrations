@@ -1,0 +1,125 @@
+table:
+  name: damodaran_betas
+  schema: public
+object_relationships:
+  - name: damodaran_industry
+    using:
+      foreign_key_constraint_on: industry
+  - name: damodaran_region
+    using:
+      foreign_key_constraint_on: region
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - beta
+        - d_e_ratio
+        - effective_tax_rate
+        - unlevered_beta
+        - cash_firm_value
+        - unlevered_beta_corrected_for_cash
+        - hi_lo_risk
+        - std_deviation_equity
+        - std_deviation_operating_income
+        - industry
+        - region
+        - created_at
+        - updated_at
+        - year
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - id
+        - beta
+        - d_e_ratio
+        - effective_tax_rate
+        - unlevered_beta
+        - cash_firm_value
+        - unlevered_beta_corrected_for_cash
+        - hi_lo_risk
+        - std_deviation_equity
+        - std_deviation_operating_income
+        - industry
+        - region
+        - created_at
+        - updated_at
+        - year
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - id
+        - beta
+        - d_e_ratio
+        - effective_tax_rate
+        - unlevered_beta
+        - cash_firm_value
+        - unlevered_beta_corrected_for_cash
+        - hi_lo_risk
+        - std_deviation_equity
+        - std_deviation_operating_income
+        - industry
+        - region
+        - created_at
+        - updated_at
+        - year
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - id
+        - beta
+        - d_e_ratio
+        - effective_tax_rate
+        - unlevered_beta
+        - cash_firm_value
+        - unlevered_beta_corrected_for_cash
+        - hi_lo_risk
+        - std_deviation_equity
+        - std_deviation_operating_income
+        - industry
+        - region
+        - created_at
+        - updated_at
+        - year
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - id
+        - beta
+        - d_e_ratio
+        - effective_tax_rate
+        - unlevered_beta
+        - cash_firm_value
+        - unlevered_beta_corrected_for_cash
+        - hi_lo_risk
+        - std_deviation_equity
+        - std_deviation_operating_income
+        - industry
+        - region
+        - created_at
+        - updated_at
+        - year
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - id
+        - beta
+        - d_e_ratio
+        - effective_tax_rate
+        - unlevered_beta
+        - cash_firm_value
+        - unlevered_beta_corrected_for_cash
+        - hi_lo_risk
+        - std_deviation_equity
+        - std_deviation_operating_income
+        - industry
+        - region
+        - created_at
+        - updated_at
+        - year
+      filter: {}

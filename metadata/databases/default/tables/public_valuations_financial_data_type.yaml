@@ -1,0 +1,132 @@
+table:
+  name: valuations_financial_data_type
+  schema: public
+object_relationships:
+  - name: accountsTypeRef
+    using:
+      manual_configuration:
+        column_mapping:
+          accounts_type: value
+        insertion_order: null
+        remote_table:
+          name: valuations_financial_accounts_type
+          schema: public
+  - name: sectorBySector
+    using:
+      foreign_key_constraint_on: sector
+array_relationships:
+  - name: digital_valuation_financial_data
+    using:
+      foreign_key_constraint_on:
+        column: financial_data_type
+        table:
+          name: digital_valuation_financial_data
+          schema: public
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - accounts_type
+        - name
+        - description
+        - created_at
+        - updated_at
+        - sector
+        - hint
+        - explanation
+        - order
+        - dev
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - accounts_type
+        - created_at
+        - description
+        - dev
+        - explanation
+        - hint
+        - id
+        - name
+        - order
+        - sector
+        - updated_at
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - accounts_type
+        - created_at
+        - description
+        - dev
+        - explanation
+        - hint
+        - id
+        - name
+        - order
+        - sector
+        - updated_at
+      filter: {}
+  - role: external_consultant
+    permission:
+      columns:
+        - accounts_type
+        - created_at
+        - description
+        - dev
+        - explanation
+        - hint
+        - id
+        - name
+        - order
+        - sector
+        - updated_at
+      filter: {}
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - accounts_type
+        - created_at
+        - description
+        - dev
+        - explanation
+        - hint
+        - id
+        - name
+        - order
+        - sector
+        - updated_at
+      filter: {}
+  - role: valuation_client
+    permission:
+      columns:
+        - accounts_type
+        - created_at
+        - description
+        - dev
+        - explanation
+        - hint
+        - id
+        - name
+        - order
+        - sector
+        - updated_at
+      filter: {}
+update_permissions:
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - accounts_type
+        - created_at
+        - description
+        - dev
+        - explanation
+        - hint
+        - id
+        - name
+        - order
+        - sector
+        - updated_at
+      filter: {}
+      check: null

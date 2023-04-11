@@ -1,0 +1,106 @@
+table:
+  name: sector_analysis_and_target_audiences
+  schema: public
+object_relationships:
+  - name: sectorAnalysisRef
+    using:
+      foreign_key_constraint_on: sector_analysis
+  - name: targetAudience
+    using:
+      foreign_key_constraint_on: target_audiences
+insert_permissions:
+  - role: buyco
+    permission:
+      check: {}
+      columns:
+        - sector_analysis
+        - target_audiences
+        - created_at
+        - updated_at
+  - role: buyco_consultant_admin
+    permission:
+      check: {}
+      columns:
+        - sector_analysis
+        - target_audiences
+        - created_at
+        - updated_at
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - sector_analysis
+        - target_audiences
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco
+    permission:
+      columns:
+        - sector_analysis
+        - target_audiences
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyco_consultant
+    permission:
+      columns:
+        - sector_analysis
+        - target_audiences
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - sector_analysis
+        - target_audiences
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: external_consultant
+    permission:
+      columns:
+        - sector_analysis
+        - target_audiences
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: external_consultant_admin
+    permission:
+      columns:
+        - sector_analysis
+        - target_audiences
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+update_permissions:
+  - role: buyco
+    permission:
+      columns:
+        - created_at
+        - updated_at
+        - sector_analysis
+        - target_audiences
+      filter: {}
+      check: null
+  - role: buyco_consultant_admin
+    permission:
+      columns:
+        - sector_analysis
+        - target_audiences
+        - created_at
+        - updated_at
+      filter: {}
+      check: null
+delete_permissions:
+  - role: buyco
+    permission:
+      filter: {}
+  - role: buyco_consultant_admin
+    permission:
+      filter: {}
