@@ -1,7 +1,4 @@
 SET check_function_bodies = false;
-CREATE SCHEMA teste;
-CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA public;
-COMMENT ON EXTENSION pgcrypto IS 'cryptographic functions';
 CREATE FUNCTION public.ativo_circulante_por_id(identificador uuid) RETURNS integer
     LANGUAGE plpgsql
     AS $$
@@ -2215,22 +2212,6 @@ CREATE TABLE public.valuations_taxation_type (
     value text NOT NULL,
     description text NOT NULL
 );
-CREATE TABLE teste."ABV" (
-    id uuid DEFAULT public.gen_random_uuid() NOT NULL
-);
-CREATE TABLE teste.nova_tabela (
-    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
-    name text NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL
-);
-CREATE TABLE teste.teste (
-    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
-    name text NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL
-);
-CREATE TABLE teste.teste_migration (
-    id uuid DEFAULT public.gen_random_uuid() NOT NULL
-);
 ALTER TABLE ONLY public.client_portal_ad ALTER COLUMN id_link SET DEFAULT nextval('public.client_portal_ad_free_id_link_seq'::regclass);
 ALTER TABLE ONLY public.valuations_financial_accounts_type
     ADD CONSTRAINT accounts_type_pkey PRIMARY KEY (value);
@@ -2676,14 +2657,6 @@ ALTER TABLE ONLY public.valuations_taxation_type
     ADD CONSTRAINT valuations_taxation_type_pkey PRIMARY KEY (value);
 ALTER TABLE ONLY public.valuations_taxation
     ADD CONSTRAINT valuations_taxation_valuation_key UNIQUE (valuation);
-ALTER TABLE ONLY teste."ABV"
-    ADD CONSTRAINT "ABV_pkey" PRIMARY KEY (id);
-ALTER TABLE ONLY teste.nova_tabela
-    ADD CONSTRAINT nova_tabela_pkey PRIMARY KEY (id);
-ALTER TABLE ONLY teste.teste_migration
-    ADD CONSTRAINT teste_migration_pkey PRIMARY KEY (id);
-ALTER TABLE ONLY teste.teste
-    ADD CONSTRAINT teste_pkey PRIMARY KEY (id);
 CREATE TRIGGER set_public_address_updated_at BEFORE UPDATE ON public.valuations_cnpj_address FOR EACH ROW EXECUTE FUNCTION public.set_current_timestamp_updated_at();
 COMMENT ON TRIGGER set_public_address_updated_at ON public.valuations_cnpj_address IS 'trigger to set value of column "updated_at" to current timestamp on row update';
 CREATE TRIGGER set_public_age_groups_updated_at BEFORE UPDATE ON public.age_groups FOR EACH ROW EXECUTE FUNCTION public.set_current_timestamp_updated_at();

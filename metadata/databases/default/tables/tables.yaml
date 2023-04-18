@@ -179,4 +179,5 @@
 - "!include teste_ABV.yaml"
 - "!include teste_nova_tabela.yaml"
 - "!include teste_teste.yaml"
-- "!include teste_teste_migration.yaml"
+- "!include teste_teste_1.yaml"
+- "!include teste_teste_4.yaml"
